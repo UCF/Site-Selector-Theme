@@ -1,8 +1,6 @@
-# Generic Wordpress Theme for UCF Marketing
+# UCF Partnership Site Selector Theme
 
-Simple theme which includes some of the most common theme elements found in most
-of the wordpress sites we do.  Includes mechanisms to easily add styles and
-scripts through the built-in wordpress functions.
+WordPress theme built off of UCF's Generic theme.
 
 
 ## Installation Requirements:
@@ -25,12 +23,22 @@ This theme relies on Twitter's Bootstrap framework. UCF's fork of the Bootstrap 
 
 ## Development
 
-This theme relies on Twitter's Bootstrap framework. UCF's fork of the Bootstrap project (http://github.com/UCF/bootstrap/) is added as submodule in static/bootstrap. To compile bootstrap:
+This theme relies on Twitter's Bootstrap framework. Bootstrap is a CSS framework that uses LESS to programatically develop stylesheets.
+UCF's fork of the Bootstrap project (http://github.com/UCF/bootstrap/) is added as submodule in static/bootstrap.
 
+### Setup
+** Note: This theme uses a version of Bootstrap whose package requirements result in Bootstrap's CSS files compiling to empty files. Follow the steps below completely to install the packages so that the `make` command works correctly. (https://github.com/twitter/bootstrap/issues/8088) **
+
+0. If they're not already installed on your machine, install node and npm for node-related package management.
 1. If this is a brand new clone, run `git submodule update --init static/bootstrap` from the theme's root directory.
-2. If they are not already installed, install the dependencies in the Developers section of the Boostrap README
-3. Checkout the latest tag of Bootstrap from the static/bootstrap directory.  If you're developing a theme off of Generic and need to make changes to the default Bootstrap .less files, create a new branch of the Bootstrap fork for your theme and check it out.
-4. Run `make bootstrap` from the static/bootstrap directory to compile the files into static/bootstrap/bootstrap.  If you've created a new Bootstrap branch, be sure to push the compiled files back up to that branch (this must be done from the static/bootstrap directory.)
+2. Navigate to static/bootstrap, then run `npm install` to install necessary dependencies for building Bootstrap's .less files. These packages are excluded in the submodule .gitignore.
+3. Navigate to the submodule's node_modules/recess folder, and open **package.json**. Under 'dependencies', update 'less' from '>= 1.3.0' to '1.3.3' and save. Delete node_modules/ from within the recess directory.
+4. From the recess directory, run `npm install`.
+5. Navigate back to the root bootstrap directory and remove the compiled bootstrap directory, if it exists.
+
+### Compiling
+Once the setup instructions above have been completed, you can compile modified .less files from the root bootstrap directory with `make bootstrap`. Compiled files will save to a new directory 'bootstrap' within the root directory (static/bootstrap/bootstrap/).
+
 
 
 ## Important files/folders:
@@ -90,28 +98,12 @@ For more information on rgraph, read the documentation at http://www.rgraph.net/
 
 ## Custom Post Types
 
-### Document
-* Basic post type for PDFs, Word docs, Excel sheets, etc.
-* Specify external URL or upload a file.  External URL takes precedence over
-uploaded file.
-* Outputs mimetype css class for optional list item styling.
-
-### Video
-* Post type for associating a Youtube video, its description, and its thumbnail
-within Wordpress.  Allows for easy video embed output via shortcode.
-
-### Publication
-* Defines an Issuu pub by its URL at http://publications.ucf.edu
-
-### Person
-* Defines a staff member.
-* Can be organized via Organizational Group custom taxonomy.
+n/a
 
 
 ## Custom Taxonomies
 
-### Organizational Group (hierarchical)
-* Defines a set of People.
+n/a
 
 
 ## Shortcodes
@@ -133,15 +125,6 @@ see the Theme Help section on shortcodes for an available list of filters.
 ### [search_form]
 * Outputs the site search form.  The search form output can be modified via
 searchform.php
-
-### [publication]
-* Include the defined Publication, referenced by its title.
-* e.g., [publication name="Where are the robots Magazine"]
-
-### [person-picture-list]
-* Similar to [person-list], but outputs a list of People with thumbnails, person names, and job titles.
-* If a person's description is available, a link to the person's profile will be outputted. If a thumbnail for the person does not exist, a default 'No Photo Available' thumbnail will display.
-* An optional row_size parameter is available to customize the number of rows that will display, in addition to the other filter parameters available to the person-list shortcode.
 
 ### [post-type-search]
 * Generates a searchable list of posts. Post lists are generated in alphabetical order and, by default, by category and post title. Posts can be searched by post title and any tags assigned to the post. See the Theme Help section on shortcodes for more information.
