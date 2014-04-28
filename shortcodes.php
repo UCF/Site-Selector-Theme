@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * Create a javascript slideshow of each top level element in the
  * shortcode.  All attributes are optional, but may default to less than ideal
@@ -259,4 +257,120 @@ function sc_post_type_search($params=array(), $content='') {
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
+
+
+/**
+* Wrap arbitrary text in <blockquote>
+**/
+function sc_blockquote($attr, $content='') {
+	$source = $attr['source'] ? $attr['source'] : null;
+	$cite = $attr['cite'] ? $attr['cite'] : null;
+	$color = $attr['color'] ? $attr['color'] : null;
+
+	$html = '<blockquote';
+	if ($source) {
+		$html .= ' class="quote"';
+	}
+
+	    if ($color) {
+	        $html .= ' style="color: ' . $color . '"';
+	    }
+
+	$html .= '><p';
+	    if ($color) {
+	        $html .= ' style="color: ' . $color . '"';
+	    }
+	    $html .= '>'.$content.'</p>';
+
+	if ($source || $cite) {
+		$html .= '<small';
+	        if ($color) {
+	            $html .= ' style="color: ' . $color . '"';
+	        }
+	        $html .= '>';
+
+	if ($source) {
+		$html .= $source;
+	}
+	if ($cite) {
+		$html .= '<cite title="'.$cite.'">'.$cite.'</cite>';
+	}
+		$html .= '</small>';
+	}
+	$html .= '</blockquote>';
+
+	return $html;
+}
+add_shortcode('blockquote', 'sc_blockquote');
+
+
+/**
+ * Display a Homepage Feature.  Creates necessary markup for displaying a
+ * full-screen background image with parallax effects.
+ **/
+function sc_homepage_feature($attrs, $content=null) {
+	$title = $attrs['title'];
+	$feature = !empty($title) ? get_page_by_title($title, 'OBJECT', 'homepage_feature') : null;
+	if ($feature) {
+		$offset = get_post_meta($feature->ID, 'homepage_feature_callout_position', true) == 'right' ? 'offset4' : '';
+		$featured_img_id = get_post_thumbnail_id($feature->ID);
+
+		$featured_img_f = wp_get_attachment_image_src($featured_img_id, 'homepage_feature-full');
+		$featured_img_d = get_homepage_feature_img($feature->ID, 'homepage_feature-desktop', 'homepage_feature_image_d');
+		$featured_img_t = get_homepage_feature_img($feature->ID, 'homepage_feature-tablet', 'homepage_feature_image_t');
+		$featured_img_m = get_homepage_feature_img($feature->ID, 'homepage_feature-mobile', 'homepage_feature_image_m');
+		if ($featured_img_f) { $featured_img_f = $featured_img_f[0]; }
+
+		ob_start();
+		?>
+		<style type="text/css">
+			<?php if ($featured_img_f) { ?>
+			@media all and (min-width: 1200px) {
+				#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_f?>'); }
+			}
+			<?php } ?>
+			<?php if ($featured_img_d) { ?>
+			@media all and (max-width: 1199px) and (min-width: 768px) {
+				#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_d?>'); }
+			}
+			<?php } ?>
+			<?php if ($featured_img_t) { ?>
+			@media all and (max-width: 767px) and (min-width: 481px) {
+				#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_t?>'); }
+			}
+			<?php } ?>
+			<?php if ($featured_img_m) { ?>
+			@media all and (max-width: 480px) {
+				#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_m?>'); }
+			}
+			<?php } ?>
+		</style>
+		<section>
+			<div class="photo" id="photo_<?=$feature->ID?>" data-stellar-background-ratio="0.5">
+				<div class="container">
+					<div class="row">
+						<div class="span8 <?=$offset?>">
+							<div class="callout">
+								<?=apply_filters('the_content', $feature->post_content)?>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="cta">
+					<a href="#">Partner with us.</a>
+				</div>
+			</div>
+			<?php if ($content) {
+				print apply_filters('the_content', $content);
+			}
+			?>
+		</section>
+		<?php
+		return ob_get_clean();
+	}
+	else {
+		return null;
+	}
+}
+add_shortcode('homepage_feature', 'sc_homepage_feature');
 ?>

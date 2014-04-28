@@ -11,44 +11,17 @@
 function __init__(){
 	add_theme_support('menus');
 	add_theme_support('post-thumbnails');
-	add_image_size('homepage', 620);
-	add_image_size('homepage-secondary', 540);
-	register_nav_menu('header-menu', __('Header Menu'));
-	register_nav_menu('footer-menu', __('Footer Menu'));
+	add_image_size('homepage_feature-full', 2000, 925, true);
+	add_image_size('homepage_feature-desktop', 1199, 925, true);
+	add_image_size('homepage_feature-tablet', 767, 775, true);
+	add_image_size('homepage_feature-mobile', 480, 475, true);
+	register_nav_menu('nav-menu', __('Navigation Menu'));
 	register_sidebar(array(
 		'name'          => __('Sidebar'),
 		'id'            => 'sidebar',
 		'description'   => 'Sidebar found on two column page templates and search pages',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column One'),
-		'id' => 'bottom-one',
-		'description' => 'Far left column in footer on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Two'),
-		'id' => 'bottom-two',
-		'description' => 'Second column from the left in footer, on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Three'),
-		'id' => 'bottom-three',
-		'description' => 'Third column from the left in footer, on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Four'),
-		'id' => 'bottom-four',
-		'description' => 'Far right in footer on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
 	));
 	foreach(Config::$styles as $style){Config::add_css($style);}
 	foreach(Config::$scripts as $script){Config::add_script($script);}
@@ -92,7 +65,8 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
  **/
 Config::$custom_post_types = array(
 	'Page',
-	'Post'
+	'Post',
+	'HomepageFeature'
 );
 
 Config::$body_classes = array('default',);
@@ -192,6 +166,18 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['twitter_url'],
 		)),
 	),
+	'Web Fonts' => array(
+		new TextField(array(
+			'name'        => 'Cloud.Typography CSS Key URL',
+			'id'          => THEME_OPTIONS_NAME.'[cloud_font_key]',
+			'description' => 'The CSS Key provided by Cloud.Typography for this project. <strong>Only include the value in the "href" portion of the link
+							tag provided; e.g. "//cloud.typography.com/000000/000000/css/fonts.css".</strong><br/><br/>NOTE: Make sure the Cloud.Typography
+							project has been configured to deliver fonts to this site\'s domain.<br/>
+							See the <a target="_blank" href="http://www.typography.com/cloud/user-guide/managing-domains">Cloud.Typography docs on managing domains</a> for more info.',
+			'default'     => '//cloud.typography.com/730568/675644/css/fonts.css', /* CSS Key relative to PROD project */
+			'value'       => $theme_options['cloud_font_key'],
+			))
+		),
 );
 
 Config::$links = array(
@@ -205,15 +191,21 @@ Config::$styles = array(
 	THEME_STATIC_URL.'/bootstrap/bootstrap/css/bootstrap.css',
 	THEME_STATIC_URL.'/bootstrap/bootstrap/css/bootstrap-responsive.css',
 	plugins_url( 'gravityforms/css/forms.css' ),
-	THEME_CSS_URL.'/webcom-base.css', 
+	//THEME_CSS_URL.'/webcom-base.css', 
 	get_bloginfo('stylesheet_url'),
 	THEME_URL.'/style-responsive.css'
 );
 
+if (!empty($theme_options['cloud_font_key'])) {
+	array_push(Config::$styles, array('name' => 'font-cloudtypography', 'src' => $theme_options['cloud_font_key']));
+	//array_push(Config::$styles, array('name' => 'font-cloudtypography-admin', 'admin' => True, 'src' => $theme_options['cloud_font_key']));
+}
+
 Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
-	array('name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-bootstrap-overrides=1',),
+	//array('name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-bootstrap-overrides=1',),
 	THEME_STATIC_URL.'/bootstrap/bootstrap/js/bootstrap.js',
+	array('name' => 'stellar-js',  'src' => THEME_JS_URL.'/jquery.stellar.min.js',),
 	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
 );

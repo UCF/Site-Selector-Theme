@@ -301,4 +301,55 @@ class Post extends CustomPostType {
 		);
 	}
 }
+
+class HomepageFeature extends CustomPostType {
+	public
+		$name           = 'homepage_feature',
+		$plural_name    = 'Homepage Features',
+		$singular_name  = 'Homepage Feature',
+		$add_new_item   = 'Add New Homepage Feature',
+		$edit_item      = 'Edit Homepage Feature',
+		$new_item       = 'New Homepage Feature',
+		$public         = True,
+		$use_editor     = True,
+		$use_thumbnails = True,
+		$use_order      = True,
+		$use_title      = True,
+		$use_metabox    = True,
+		$taxonomies     = array();
+
+	public function fields() {
+		$prefix = $this->options('name').'_';
+		return array(
+			array(
+				'name' => 'Callout box position',
+				'desc' => 'Position of the yellow box inside the homepage feature.',
+				'id' => $prefix.'callout_position',
+				'type' => 'radio',
+				'options' => array(
+					'Left' => 'left',
+					'Right' => 'right'
+				),
+			),
+			array(
+				'name' => 'Featured image "Desktop" size override',
+				'desc' => 'Overrides the automatically generated "Desktop" size of the featured image for this homepage feature. Image should be 1199x925px.',
+				'id' => $prefix.'image_d',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Featured image "Tablet" size override',
+				'desc' => 'Overrides the automatically generated "Tablet" size of the featured image for this homepage feature. Image should be 767x775px.',
+				'id' => $prefix.'image_t',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Featured image "Mobile" size override',
+				'desc' => 'Overrides the automatically generated "Mobile" size of the featured image for this homepage feature. Image should be 480x475px.',
+				'id' => $prefix.'image_m',
+				'type' => 'file',
+			),
+		);
+	}
+}
 ?>

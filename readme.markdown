@@ -80,20 +80,17 @@ Bootstrap.  For the most accurate documentation on the theme's current
 Bootstrap version, visit http://bootstrapdocs.com/ and select the version number
 found at the top of static/bootstrap/bootstrap/css/bootstrap.css
 
+### Using Cloud.Typography
+This theme is configured to work with the Cloud.Typography web font service.  To deliver the web fonts specified in
+this theme, a project must be set up in Cloud.Typography that references the domain on which this repository will live.
 
-Since this theme wasn't really built to function like a separate library to use
-in future themes, and more of a starting point for those themes, the best usage
-of this repo might be to add it as a remote to new wordpress projects.  Then
-you can merge from that remote as you wish to keep the current theme up to date.
+Development environments should be set up in a separate, Development Mode project in Cloud.Typography to prevent pageviews
+from development environments counting toward the Cloud.Typography monthly pageview limit.  Paste the CSS Key URL provided 
+by Cloud.Typography in the CSS Key URL field in the Theme Options admin area.
 
-So when setting up a new project, create an empty repo, setup the remote to this
-repo, and merge it into the new repo creating the base theme.  Then make your
-edits from there.
-
-
-The rgraph branch of this repo includes an extra custom post type for generating
-custom bar graphs, pie charts, etc. and their required javascript dependencies.
-For more information on rgraph, read the documentation at http://www.rgraph.net/
+This site's production environment should have its own Cloud.Typography project, configured identically to the Development
+Mode equivalent project.  **The webfont archive name (usually six-digit number) provided by Cloud.Typography MUST match the
+name of the directory for Cloud.Typography webfonts in this repository!**
 
 
 ## Custom Post Types

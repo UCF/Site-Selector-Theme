@@ -5,3 +5,199 @@ Github Theme URI: https://github.com/UCF/Site-Selector-Theme
 Version: v0.0.0
 */
 
+/**
+ * General
+ **/
+body {
+	position: relative;
+}
+p:empty { display: none; }
+p,
+ol,
+ul {
+	font-family: Georgia, serif;
+	font-size: 20px;
+	line-height: 32px;
+	color: #222;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+blockquote p,
+blockquote small {
+	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-style: normal;
+	color: #222;
+	letter-spacing: -0.025em;
+}
+
+h2 {
+	font-size: 20px;
+	line-height: 1em;
+	text-transform: uppercase;
+}
+
+/**
+ * Navigation
+ **/
+nav {
+	text-align: center;
+}
+nav ul {
+	list-style-type: none;
+	margin: 0;
+	line-height: 1em;
+}
+nav ul li {
+	display: inline-block;
+	line-height: 1em;
+}
+nav a {
+	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-size: 18px;
+	line-height: 1em;
+	font-weight: 800;
+	font-style: normal;
+	letter-spacing: -0.025em;
+	text-transform: uppercase;
+	padding: 0 20px;
+}
+
+body > nav {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 999;
+	background-color: rgba(0,0,0,0.8);
+	padding: 20px 0;
+}
+body > nav a,
+body > nav a:hover {
+	color: #fff;
+}
+
+/**
+ * Homepage
+ **/
+.callout {
+	display: block;
+	padding: 20px;
+	background: rgba(245,192,13,0.95);
+	box-shadow: -4px -3px 8px 0px rgba(50, 50, 50, 0.75);
+}
+.callout blockquote {
+	border-left: 0;
+	padding: 0;
+	margin-bottom: 0;
+}
+.callout blockquote,
+.callout blockquote p {
+	font-size: 58px;
+	line-height: 64px;
+	font-weight: bold;
+	color: #fff;
+}
+.callout blockquote small {
+	margin-top: 20px;
+	font-size: 26px;
+	font-weight: 400;
+	line-height: 1em;
+	color: #fff;
+}
+.cta {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.cta a {
+	display: block;
+	width: 300px;
+	margin: auto;
+	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-size: 30px;
+	line-height: 1em;
+	font-weight: 800;
+	font-style: normal;
+	letter-spacing: -0.025em;
+	color: #fff;
+	text-decoration: underline;
+	padding: 25px 0;
+	background: #222;
+}
+
+.whitespace {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.whitespace-2x {
+	padding-top: 90px;
+	padding-bottom: 90px;
+}
+
+.photo {
+	background-attachment: fixed;
+	background-position: 50% 0;
+	background-repeat: no-repeat;
+	/*height: 750px; */ /* height is defined in media queries to prevent unnecessary asset downloading */
+	position: relative;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 150px 60px 0 60px;
+}
+.photo span {
+	top: 20%;
+	color: white;
+	display: block;
+	left: 50%;
+	font-size: 38px;
+	padding: 10px;
+	position: absolute;
+	text-shadow: 0 2px 0 black, 0 0 10px black;
+}
+
+/**
+ * Subpages
+ **/
+.page-content {
+	padding: 80px 0;
+}
+
+/**
+ * Footer
+ **/
+footer nav {
+	padding-bottom: 25px;
+	border-bottom: 2px solid #d5d5d5;
+}
+footer nav a,
+footer nav a:hover {
+	color: #d5d5d5;
+}
+footer nav a:hover { text-decoration: underline; }
+
+#footer-cta {
+	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-size: 36px;
+	line-height: 1em;
+	letter-spacing: -0.045em;
+	font-weight: 200;
+	font-style: normal;
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 80px;
+}
+#footer-cta strong { font-weight: 800; }
+#footer-logo {
+	text-align: center;
+	margin-bottom: 80px;
+}
