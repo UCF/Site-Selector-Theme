@@ -191,6 +191,11 @@ var parallaxHome = function($) {
 }
 
 
+var removeEmptyPTags = function($) {
+	$('p:empty').remove();
+}
+
+
 if (typeof jQuery != 'undefined'){
 	jQuery(document).ready(function($) {
 		//Webcom.slideshow($);
@@ -203,5 +208,6 @@ if (typeof jQuery != 'undefined'){
 		Generic.PostTypeSearch($);
 
 		parallaxHome($);
+		removeEmptyPTags($);
 	});
 }else{console.log('jQuery dependancy failed to load');}
