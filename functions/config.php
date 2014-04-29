@@ -11,8 +11,8 @@
 function __init__(){
 	add_theme_support('menus');
 	add_theme_support('post-thumbnails');
-	add_image_size('homepage_feature-full', 2000, 925, true);
-	add_image_size('homepage_feature-desktop', 1199, 925, true);
+	add_image_size('homepage_feature-full', 2000, 1200, true);
+	add_image_size('homepage_feature-desktop', 1199, 1200, true);
 	add_image_size('homepage_feature-tablet', 767, 775, true);
 	add_image_size('homepage_feature-mobile', 480, 475, true);
 	register_nav_menu('nav-menu', __('Navigation Menu'));
