@@ -118,6 +118,9 @@ body > nav a:hover {
 	white-space: nowrap;
 	overflow: hidden;
 	margin: 0;
+	display: block;
+	width: 1px;
+	height: 1px;
 }
 .home h2 {
 	font-size: 20px;

@@ -178,7 +178,8 @@ var parallaxHome = function($) {
 		else {
 			$(window).stellar({
 				horizontalScrolling: false,
-				responsive: true
+				responsive: true,
+				parallaxElements: false
 			});
 		}
 	}
@@ -196,6 +197,16 @@ var removeEmptyPTags = function($) {
 }
 
 
+/* Add Bootstrap button styles for GravityForm submit buttons */
+styleGformButtons = function($) {
+	$('.gform_button').addClass('btn');
+	$(document).bind('gform_post_render', function(){
+		// Handle buttons generated with ajax
+    	$('.gform_button').addClass('btn');
+	});
+}
+
+
 if (typeof jQuery != 'undefined'){
 	jQuery(document).ready(function($) {
 		//Webcom.slideshow($);
@@ -209,5 +220,6 @@ if (typeof jQuery != 'undefined'){
 
 		parallaxHome($);
 		removeEmptyPTags($);
+		styleGformButtons($);
 	});
 }else{console.log('jQuery dependancy failed to load');}
