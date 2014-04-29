@@ -160,6 +160,20 @@ Generic.PostTypeSearch = function($) {
 }
 
 
+/* Assign browser-specific body classes on page load */
+var addBodyClasses = function($) {
+	var bodyClass = '';
+	// Old IE:
+	if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
+		var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number
+		if (ieversion >= 9) { bodyClass = 'ie ie9'; }
+		else if (ieversion >= 8) { bodyClass = 'ie ie8'; }
+	}
+
+	$('body').addClass(bodyClass);
+}
+
+
 var parallaxHome = function($) {
 	var isTabletSize = function() {
 		if ($(window).width() <= 768) {
@@ -183,7 +197,7 @@ var parallaxHome = function($) {
 			});
 		}
 	}
-	if ($('main').hasClass('home')) {
+	if ($('main').hasClass('home') && $('body').hasClass('ie8') == false) {
 		toggleStellar();
 		$(window).resize(function() {
 			toggleStellar();
@@ -218,6 +232,7 @@ if (typeof jQuery != 'undefined'){
 		Generic.removeExtraGformStyles($);
 		Generic.PostTypeSearch($);
 
+		addBodyClasses($);
 		parallaxHome($);
 		removeEmptyPTags($);
 		styleGformButtons($);

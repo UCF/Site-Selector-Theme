@@ -199,6 +199,7 @@ body > nav a:hover {
 	box-sizing: border-box;
 	padding: 150px 0;
 }
+.ie8 .photo { background-attachment: scroll; background-position: center center; }
 .photo span {
 	top: 20%;
 	color: white;
