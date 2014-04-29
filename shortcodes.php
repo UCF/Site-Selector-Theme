@@ -339,7 +339,7 @@ function sc_homepage_feature($attrs, $content=null) {
 		</style>
 		<!--[if lt IE 9]>
 		<style type="text/css">
-			#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_d?>'); background-position: center center; }
+			#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_d?>'); }
 		</style>
 		<![endif]-->
 		<section>

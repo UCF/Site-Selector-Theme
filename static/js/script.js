@@ -197,17 +197,12 @@ var parallaxHome = function($) {
 			});
 		}
 	}
-	if ($('main').hasClass('home') && $('body').hasClass('ie8') == false) {
+	if ($('main').hasClass('home')) {
 		toggleStellar();
 		$(window).resize(function() {
 			toggleStellar();
 		});
 	}
-}
-
-
-var removeEmptyPTags = function($) {
-	$('p:empty').remove();
 }
 
 
@@ -234,7 +229,6 @@ if (typeof jQuery != 'undefined'){
 
 		addBodyClasses($);
 		parallaxHome($);
-		removeEmptyPTags($);
 		styleGformButtons($);
 	});
 }else{console.log('jQuery dependancy failed to load');}
