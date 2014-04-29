@@ -325,26 +325,23 @@ function sc_homepage_feature($attrs, $content=null) {
 		?>
 		<style type="text/css">
 			<?php if ($featured_img_f) { ?>
-			@media all and (min-width: 1200px) {
-				#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_f?>'); }
-			}
+			@media all and (min-width: 1200px) { #photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_f?>'); } }
 			<?php } ?>
 			<?php if ($featured_img_d) { ?>
-			@media all and (max-width: 1199px) and (min-width: 768px) {
-				#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_d?>'); }
-			}
+			@media all and (max-width: 1199px) and (min-width: 768px) { #photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_d?>'); } }
 			<?php } ?>
 			<?php if ($featured_img_t) { ?>
-			@media all and (max-width: 767px) and (min-width: 481px) {
-				#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_t?>'); }
-			}
+			@media all and (max-width: 767px) and (min-width: 481px) { #photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_t?>'); } }
 			<?php } ?>
 			<?php if ($featured_img_m) { ?>
-			@media all and (max-width: 480px) {
-				#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_m?>'); }
-			}
+			@media all and (max-width: 480px) { #photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_m?>'); } }
 			<?php } ?>
 		</style>
+		<!--[if lt IE 9]>
+		<style type="text/css">
+			#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_d?>'); background-position: center center; }
+		</style>
+		<![endif]-->
 		<section>
 			<div class="photo" id="photo_<?=$feature->ID?>" data-stellar-background-ratio="0.5">
 				<div class="container">

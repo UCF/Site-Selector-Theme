@@ -14,14 +14,16 @@ body {
 p:empty { display: none; }
 p,
 ol,
-ul {
+ul,
+li {
 	font-family: Georgia, serif;
-	font-size: 20px;
-	line-height: 32px;
+	font-size: 16px;
+	line-height: 28px;
 	color: #222;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
 h1,
 h2,
 h3,
@@ -31,16 +33,39 @@ h6,
 blockquote,
 blockquote p,
 blockquote small {
-	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B';
+	font-weight: 700;
 	font-style: normal;
 	color: #222;
 	letter-spacing: -0.025em;
 }
 
+h1 {
+	font-size: 42px;
+}
 h2 {
-	font-size: 20px;
+	font-size: 26.5px;
+}
+h3 {
+	font-size: 21.5px;
+}
+h4 {
+	font-size: 17px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	line-height: 1em;
-	text-transform: uppercase;
+}
+
+a.btn,
+button.btn {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
 }
 
 /**
@@ -59,7 +84,7 @@ nav ul li {
 	line-height: 1em;
 }
 nav a {
-	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
 	font-size: 18px;
 	line-height: 1em;
 	font-weight: 800;
@@ -75,6 +100,7 @@ body > nav {
 	right: 0;
 	left: 0;
 	z-index: 999;
+	background-color: #333;
 	background-color: rgba(0,0,0,0.8);
 	padding: 20px 0;
 }
@@ -86,10 +112,23 @@ body > nav a:hover {
 /**
  * Homepage
  **/
+.home h1 {
+	position: absolute;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+}
+.home h2 {
+	font-size: 20px;
+	text-transform: uppercase;
+}
+
 .callout {
 	display: block;
 	padding: 20px;
-	background: rgba(245,192,13,0.95);
+	background-color: #fcc904;
+	background-color: rgba(245,192,13,0.95);
 	box-shadow: -4px -3px 8px 0px rgba(50, 50, 50, 0.75);
 }
 .callout blockquote {
@@ -106,10 +145,13 @@ body > nav a:hover {
 }
 .callout blockquote small {
 	margin-top: 20px;
-	font-size: 26px;
+	font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B';
 	font-weight: 400;
+	font-style: normal;
+	font-size: 26px;
 	line-height: 1em;
 	color: #fff;
+	text-align: right;
 }
 .cta {
 	position: absolute;
@@ -122,7 +164,7 @@ body > nav a:hover {
 	display: block;
 	width: 300px;
 	margin: auto;
-	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
 	font-size: 30px;
 	line-height: 1em;
 	font-weight: 800;
@@ -152,7 +194,7 @@ body > nav a:hover {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 150px 60px 0 60px;
+	padding: 150px 0;
 }
 .photo span {
 	top: 20%;
@@ -186,17 +228,22 @@ footer nav a:hover {
 footer nav a:hover { text-decoration: underline; }
 
 #footer-cta {
-	font-family: 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Gotham SSm 2r', 'Gotham SSm A', 'Gotham SSm B';
+	font-weight: 200;
+	font-style: normal;
 	font-size: 36px;
 	line-height: 1em;
 	letter-spacing: -0.045em;
-	font-weight: 200;
 	font-style: normal;
 	text-align: center;
 	margin-top: 40px;
 	margin-bottom: 80px;
 }
-#footer-cta strong { font-weight: 800; }
+#footer-cta strong {
+	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
+	font-weight: 800;
+	font-style: normal;
+}
 #footer-logo {
 	text-align: center;
 	margin-bottom: 80px;

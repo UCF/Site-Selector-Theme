@@ -7,21 +7,33 @@
  	.photo {
  		height: 825px;
  	}
- }
+}
 @media all and (max-width: 1199px) and (min-width: 768px) {
 	.photo {
 		height: 825px;
 	}
 }
 @media all and (max-width: 978px) {
-	p,
+/*	p,
 	ol,
-	ul {
-		font-size: 16px;
-		line-height: 26px;
+	ul,
+	li {
+		font-size: 14px;
+		line-height: 24px;
+	}*/
+	h1 {
+		font-size: 38px;
 	}
-
 	h2 {
+		font-size: 24.5px;
+	}
+	h3 {
+		font-size: 20.5px;
+	}
+	h4 {
+		font-size: 16px;
+	}
+	main.home h2 {
 		font-size: 18px;
 	}
 
@@ -50,6 +62,7 @@
 }
 @media all and (max-width: 767px) {
 	body { padding: 0; }
+	body main.page-content { padding: 80px 20px; }
 
 	nav ul li { padding: 8px 0; }
 	nav a {
@@ -98,13 +111,12 @@
 	}
 }
 @media all and (max-width: 480px) {
-	.callout {
-		margin-bottom: 150px;
-	}
+	body main.page-content { padding: 100px 20px; }
+
 	.callout blockquote,
 	.callout blockquote p {
 		font-size: 25px;
-		line-height: 32px;
+		line-height: 28px;
 	}
 	.callout blockquote small {
 		font-size: 16px;
@@ -120,5 +132,6 @@
 	.photo {
 		height: auto;
 		padding-top: 100px;
+		padding-bottom: 175px;
 	}
 }
