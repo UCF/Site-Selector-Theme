@@ -4,13 +4,25 @@
  * from where the background image is pushed upward on scroll.
  **/
 @media all and (min-width: 1200px) {
- 	.photo {
+ 	.parallax-feature .parallax-photo {
  		height: 825px;
+ 	}
+ 	.parallax-header .parallax-photo {
+ 		height: 725px;
  	}
 }
 @media all and (max-width: 1199px) and (min-width: 768px) {
-	.photo {
+	.parallax-feature .parallax-photo {
 		height: 825px;
+	}
+	.parallax-header .parallax-photo {
+		height: 725px;
+	}
+}
+@media all and (max-width: 1199px) and (min-width: 979px) {
+	.parallax-header h1 {
+		width: 65%;
+		font-size: 90px;
 	}
 }
 @media all and (max-width: 978px) {
@@ -21,23 +33,28 @@
 		font-size: 14px;
 		line-height: 24px;
 	}*/
-	h1 {
+	h1,
+	.h1 {
 		font-size: 38px;
+		line-height: 1.3em;
 	}
-	h2 {
-		font-size: 24.5px;
-	}
-	h3 {
-		font-size: 20.5px;
-	}
-	h4 {
-		font-size: 16px;
-	}
-	main.home h2 {
+	h2,
+	.h2 {
 		font-size: 18px;
+	}
+	h3,
+	.h3 {
+		font-size: 17px;
+	}
+
+	blockquote,
+	blockquote p {
+		font-size: 28px;
 	}
 
 	nav a { padding: 0 16px; }
+
+	.page-content { padding-top: 55px; padding-bottom: 55px; }
 
 	.callout blockquote,
 	.callout blockquote p {
@@ -50,19 +67,82 @@
 		padding-bottom: 75px;
 	}
 
-	.photo {
+	.parallax-photo {
 		padding-left: 0;
 		padding-right: 0;
 	}
+	.parallax-header .parallax-photo {
+		height: 575px;
+	}
+
+	.parallax-header h1 {
+		width: 60%;
+		font-size: 60px;
+		bottom: -0.32em;
+	}
+	.parallax-header-inner .cta a {
+		font-size: 26px;
+		width: 270px;
+		padding: 20px 0;
+	}
 }
 @media all and (max-width: 768px) {
-	.photo {
+	.parallax-photo {
 		background-attachment: scroll; /* reset */
 	}
 }
 @media all and (max-width: 767px) {
 	body { padding: 0; }
-	body main.page-content { padding: 80px 20px; }
+
+	p,
+	ol,
+	ul,
+	li {
+		font-size: 15px;
+		line-height: 24px;
+	}
+
+	blockquote,
+	blockquote p {
+		font-size: 22px;
+	}
+	blockquote small {
+		font-size: 16px;
+	}
+
+	hr {
+		margin: 20px 0;
+	}
+
+	iframe,
+	embed,
+	object {
+		height: 300px;
+		margin: 20px 0 0 0;
+	}
+
+	.caption {
+		padding-bottom: 15px;
+		line-height: 1.35em;
+	}
+
+	.whitespace,
+	.whitespace-2x,
+	.whitespace-xs {
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.whitespace + .whitespace,
+	.whitespace-2x + .whitespace-2x {
+		padding-top: 0;
+	}
+	
+	.page-content { padding-top: 30px; padding-bottom: 30px; }
+	.page-content [class*="span"] {
+		padding-bottom: 10px;
+	}
+
+	.parallax-content .container { padding-left: 20px; padding-right: 20px; }
 
 	nav ul li { padding: 8px 0; }
 	nav a {
@@ -73,19 +153,27 @@
 		padding: 10px 0;
 	}
 
-	main section .container {
-		padding-left: 20px;
-		padding-right: 20px;
+	.parallax-header-inner .cta {
+		left: 0;
 	}
 
-	.whitespace,
-	.whitespace-2x {
-		padding-top: 20px;
-		padding-bottom: 20px;
+	.parallax-header h1 {
+		width: 100%;
+		position: absolute;
+		top: 36%;
+		left: 0;
+		right: 0;
+		bottom: auto;
+		font-size: 70px;
+		text-align: center;
+		line-height: 1em;
 	}
-	.whitespace + .whitespace,
-	.whitespace-2x + .whitespace-2x {
-		padding-top: 0;
+
+	.parallax-feature .parallax-photo {
+		margin-bottom: 20px;
+	}
+	.parallax-feature [class*="span"] {
+		padding-bottom: 5px;
 	}
 
 	#footer-cta {
@@ -105,12 +193,23 @@
 		font-size: 20px;
 	}
 
-	.photo {
+	.parallax-feature .parallax-photo {
 		height: 650px;
+	}
+	.parallax-header .parallax-photo {
+		height: 575px;
+	}
+	.parallax-photo {
 		padding-top: 80px;
 	}
 }
 @media all and (max-width: 480px) {
+	iframe,
+	embed,
+	object {
+		height: 200px;
+	}
+
 	body main.page-content { padding: 100px 20px; }
 
 	.callout blockquote,
@@ -129,9 +228,17 @@
 		width: 260px;
 	}
 
-	.photo {
+	.parallax-feature .parallax-photo {
 		height: auto;
 		padding-top: 100px;
-		padding-bottom: 175px;
+		padding-bottom: 160px;
+	}
+	.parallax-header .parallax-photo {
+		height: 300px;
+	}
+
+	.parallax-header h1 {
+		font-size: 40px;
+		top: 34%;
 	}
 }

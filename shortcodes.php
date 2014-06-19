@@ -305,45 +305,21 @@ add_shortcode('blockquote', 'sc_blockquote');
 
 
 /**
- * Display a Homepage Feature.  Creates necessary markup for displaying a
+ * Display a Parallax Feature.  Creates necessary markup for displaying a
  * full-screen background image with parallax effects.
  **/
-function sc_homepage_feature($attrs, $content=null) {
+function sc_parallax_feature($attrs, $content=null) {
 	$title = $attrs['title'];
-	$feature = !empty($title) ? get_page_by_title($title, 'OBJECT', 'homepage_feature') : null;
+	$feature = !empty($title) ? get_page_by_title($title, 'OBJECT', 'parallax_feature') : null;
 	if ($feature) {
-		$offset = get_post_meta($feature->ID, 'homepage_feature_callout_position', true) == 'right' ? 'offset4' : '';
-		$featured_img_id = get_post_thumbnail_id($feature->ID);
-
-		$featured_img_f = wp_get_attachment_image_src($featured_img_id, 'homepage_feature-full');
-		$featured_img_d = get_homepage_feature_img($feature->ID, 'homepage_feature-desktop', 'homepage_feature_image_d');
-		$featured_img_t = get_homepage_feature_img($feature->ID, 'homepage_feature-tablet', 'homepage_feature_image_t');
-		$featured_img_m = get_homepage_feature_img($feature->ID, 'homepage_feature-mobile', 'homepage_feature_image_m');
-		if ($featured_img_f) { $featured_img_f = $featured_img_f[0]; }
+		$offset = get_post_meta($feature->ID, 'parallax_feature_callout_position', true) == 'right' ? 'offset4' : '';
+		$show_cta = get_post_meta($feature->ID, 'parallax_feature_display_cta', true);
 
 		ob_start();
+		print get_parallax_feature_css($feature->ID, 'parallax_feature_image_d', 'parallax_feature_image_t', 'parallax_feature_image_m');
 		?>
-		<style type="text/css">
-			<?php if ($featured_img_f) { ?>
-			@media all and (min-width: 1200px) { #photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_f?>'); } }
-			<?php } ?>
-			<?php if ($featured_img_d) { ?>
-			@media all and (max-width: 1199px) and (min-width: 768px) { #photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_d?>'); } }
-			<?php } ?>
-			<?php if ($featured_img_t) { ?>
-			@media all and (max-width: 767px) and (min-width: 481px) { #photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_t?>'); } }
-			<?php } ?>
-			<?php if ($featured_img_m) { ?>
-			@media all and (max-width: 480px) { #photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_m?>'); } }
-			<?php } ?>
-		</style>
-		<!--[if lt IE 9]>
-		<style type="text/css">
-			#photo_<?=$feature->ID?> { background-image: url('<?=$featured_img_d?>'); }
-		</style>
-		<![endif]-->
-		<section>
-			<div class="photo" id="photo_<?=$feature->ID?>" data-stellar-background-ratio="0.5">
+		<section class="parallax-content parallax-feature">
+			<div class="parallax-photo" id="photo_<?=$feature->ID?>" data-stellar-background-ratio="0.5">
 				<div class="container">
 					<div class="row">
 						<div class="span8 <?=$offset?>">
@@ -353,9 +329,11 @@ function sc_homepage_feature($attrs, $content=null) {
 						</div>
 					</div>
 				</div>
+				<?php if ($show_cta == 'on') { ?>
 				<div class="cta">
-					<a href="#">Partner with us.</a>
+					<?php print get_cta_link(); ?>
 				</div>
+				<?php } ?>
 			</div>
 			<?php if ($content) {
 				print apply_filters('the_content', $content);
@@ -369,5 +347,5 @@ function sc_homepage_feature($attrs, $content=null) {
 		return null;
 	}
 }
-add_shortcode('homepage_feature', 'sc_homepage_feature');
+add_shortcode('parallax_feature', 'sc_parallax_feature');
 ?>

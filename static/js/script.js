@@ -174,7 +174,7 @@ var addBodyClasses = function($) {
 }
 
 
-var parallaxHome = function($) {
+var parallaxPhotos = function($) {
 	var isTabletSize = function() {
 		if ($(window).width() <= 768) {
 			return true;
@@ -185,7 +185,7 @@ var parallaxHome = function($) {
 		if (isTabletSize()) {
 			if ($(window).data('plugin_stellar')) {
 				$(window).data('plugin_stellar').destroy();
-				$('.photo')
+				$('.parallax-photo')
 					.css('background-position', '50% 0px');
 			}
 		}
@@ -197,17 +197,23 @@ var parallaxHome = function($) {
 			});
 		}
 	}
-	if ($('main').hasClass('home')) {
+	
+	toggleStellar();
+	$(window).resize(function() {
 		toggleStellar();
-		$(window).resize(function() {
-			toggleStellar();
-		});
-	}
+	});
+}
+
+
+/* Fit subpage title text within the heading's set width */
+var subpageTitleSize = function($) {
+	var h1 = $('.parallax-header h1');
+	h1.fitText(0.7, { minFontSize: '20px', maxFontSize: '120px' });
 }
 
 
 /* Add Bootstrap button styles for GravityForm submit buttons */
-styleGformButtons = function($) {
+var styleGformButtons = function($) {
 	$('.gform_button').addClass('btn');
 	$(document).bind('gform_post_render', function(){
 		// Handle buttons generated with ajax
@@ -228,7 +234,8 @@ if (typeof jQuery != 'undefined'){
 		Generic.PostTypeSearch($);
 
 		addBodyClasses($);
-		parallaxHome($);
+		parallaxPhotos($);
+		subpageTitleSize($);
 		styleGformButtons($);
 	});
 }else{console.log('jQuery dependancy failed to load');}

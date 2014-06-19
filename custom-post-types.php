@@ -268,6 +268,24 @@ class Page extends CustomPostType {
 				'id' => $prefix.'stylesheet',
 				'type' => 'file',
 			),
+			array(
+				'name' => 'Featured image "Desktop" size override',
+				'desc' => 'Overrides the automatically generated "Desktop" size of the featured image for this page. Image should be 1199x925px.',
+				'id' => $prefix.'image_d',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Featured image "Tablet" size override',
+				'desc' => 'Overrides the automatically generated "Tablet" size of the featured image for this page. Image should be 767x775px.',
+				'id' => $prefix.'image_t',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Featured image "Mobile" size override',
+				'desc' => 'Overrides the automatically generated "Mobile" size of the featured image for this page. Image should be 480x475px.',
+				'id' => $prefix.'image_m',
+				'type' => 'file',
+			),
 		);
 	}
 }
@@ -302,14 +320,14 @@ class Post extends CustomPostType {
 	}
 }
 
-class HomepageFeature extends CustomPostType {
+class ParallaxFeature extends CustomPostType {
 	public
-		$name           = 'homepage_feature',
-		$plural_name    = 'Homepage Features',
-		$singular_name  = 'Homepage Feature',
-		$add_new_item   = 'Add New Homepage Feature',
-		$edit_item      = 'Edit Homepage Feature',
-		$new_item       = 'New Homepage Feature',
+		$name           = 'parallax_feature',
+		$plural_name    = 'Parallax Features',
+		$singular_name  = 'Parallax Feature',
+		$add_new_item   = 'Add New Parallax Feature',
+		$edit_item      = 'Edit Parallax Feature',
+		$new_item       = 'New Parallax Feature',
 		$public         = True,
 		$use_editor     = True,
 		$use_thumbnails = True,
@@ -323,7 +341,7 @@ class HomepageFeature extends CustomPostType {
 		return array(
 			array(
 				'name' => 'Callout box position',
-				'desc' => 'Position of the yellow box inside the homepage feature.',
+				'desc' => 'Position of the yellow box inside the parallax feature.',
 				'id' => $prefix.'callout_position',
 				'type' => 'radio',
 				'options' => array(
@@ -333,21 +351,27 @@ class HomepageFeature extends CustomPostType {
 			),
 			array(
 				'name' => 'Featured image "Desktop" size override',
-				'desc' => 'Overrides the automatically generated "Desktop" size of the featured image for this homepage feature. Image should be 1199x925px.',
+				'desc' => 'Overrides the automatically generated "Desktop" size of the featured image for this parallax feature. Image should be 1199x925px.',
 				'id' => $prefix.'image_d',
 				'type' => 'file',
 			),
 			array(
 				'name' => 'Featured image "Tablet" size override',
-				'desc' => 'Overrides the automatically generated "Tablet" size of the featured image for this homepage feature. Image should be 767x775px.',
+				'desc' => 'Overrides the automatically generated "Tablet" size of the featured image for this parallax feature. Image should be 767x775px.',
 				'id' => $prefix.'image_t',
 				'type' => 'file',
 			),
 			array(
 				'name' => 'Featured image "Mobile" size override',
-				'desc' => 'Overrides the automatically generated "Mobile" size of the featured image for this homepage feature. Image should be 480x475px.',
+				'desc' => 'Overrides the automatically generated "Mobile" size of the featured image for this parallax feature. Image should be 480x475px.',
 				'id' => $prefix.'image_m',
 				'type' => 'file',
+			),
+			array(
+				'name' => 'Display CTA',
+				'desc' => 'Display a "Partner With Us" link in the bottom-center edge of the feature.',
+				'id' => $prefix.'display_cta',
+				'type' => 'checkbox'
 			),
 		);
 	}

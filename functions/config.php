@@ -11,10 +11,10 @@
 function __init__(){
 	add_theme_support('menus');
 	add_theme_support('post-thumbnails');
-	add_image_size('homepage_feature-full', 2000, 1200, true);
-	add_image_size('homepage_feature-desktop', 1199, 1200, true);
-	add_image_size('homepage_feature-tablet', 767, 775, true);
-	add_image_size('homepage_feature-mobile', 480, 475, true);
+	add_image_size('parallax_feature-full', 2000, 1200, true);
+	add_image_size('parallax_feature-desktop', 1199, 1200, true);
+	add_image_size('parallax_feature-tablet', 767, 775, true);
+	add_image_size('parallax_feature-mobile', 480, 475, true);
 	register_nav_menu('nav-menu', __('Navigation Menu'));
 	register_sidebar(array(
 		'name'          => __('Sidebar'),
@@ -66,10 +66,19 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
 Config::$custom_post_types = array(
 	'Page',
 	'Post',
-	'HomepageFeature'
+	'ParallaxFeature'
 );
 
 Config::$body_classes = array('default',);
+
+/**
+* Grab array of Issue posts for Config::$theme_settings:
+**/
+$pages = get_posts(array('post_type' => 'page'));
+$pages_array = array();
+foreach ($pages as $page) {
+	$pages_array[$page->post_title] = $page->ID;
+}
 
 /**
  * Configure theme settings, see abstract class Field's descendants for
@@ -131,6 +140,14 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[organization_name]',
 			'description' => 'Your organization\'s name',
 			'value'       => $theme_options['organization_name'],
+		)),
+		new SelectField(array(
+			'name'        => 'Call to Action link',
+			'id'          => THEME_OPTIONS_NAME.'[cta]',
+			'description' => 'Page where the "Partner with Us" links used on the site direct to.',
+			'choices'     => $pages_array,
+			'default'     => $pages_array[0],
+			'value'       => $theme_options['cta'],
 		)),
 	),
 	'Social' => array(
@@ -206,6 +223,7 @@ Config::$scripts = array(
 	//array('name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-bootstrap-overrides=1',),
 	THEME_STATIC_URL.'/bootstrap/bootstrap/js/bootstrap.js',
 	array('name' => 'stellar-js',  'src' => THEME_JS_URL.'/jquery.stellar.min.js',),
+	array('name' => 'fittext-js',  'src' => THEME_JS_URL.'/jquery.fittext.js',),
 	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
 );
