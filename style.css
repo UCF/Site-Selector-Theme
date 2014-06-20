@@ -107,6 +107,18 @@ hr {
 	margin: 30px 0;
 }
 
+iframe,
+embed,
+object {
+	width: 100%;
+	height: 500px;
+	margin: 35px 0 0 0;
+}
+
+
+/**
+ * Components
+ **/
 a.btn,
 button.btn {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -122,13 +134,67 @@ button.btn {
 	line-height: 1.2em;
 }
 
-iframe,
-embed,
-object {
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
 	width: 100%;
-	height: 500px;
-	margin: 35px 0 0 0;
 }
+
+.callout {
+	display: block;
+	padding: 20px;
+	background-color: #fcc904;
+	background-color: rgba(245,192,13,0.95);
+	box-shadow: -4px -3px 8px 0px rgba(50, 50, 50, 0.75);
+}
+.callout blockquote {
+	border-left: 0;
+	padding: 0;
+	margin-bottom: 0;
+}
+.callout blockquote,
+.callout blockquote p {
+	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B';
+	font-weight: 700;
+	letter-spacing: -0.025em;
+	font-size: 58px;
+	line-height: 64px;
+	color: #fff;
+}
+.callout blockquote small {
+	display: block;
+	margin-top: 20px;
+	font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B';
+	font-weight: 400;
+	font-style: normal;
+	font-size: 26px;
+	line-height: 1.2em;
+	color: #fff;
+	text-align: left;
+}
+
+.cta {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.cta a {
+	display: block;
+	width: 300px;
+	margin: auto;
+	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
+	font-size: 30px;
+	line-height: 1em;
+	font-weight: 800;
+	font-style: normal;
+	letter-spacing: -0.025em;
+	color: #fff;
+	text-decoration: underline;
+	padding: 25px 0;
+	background-color: #222;
+}
+
 
 /**
  * Utility
@@ -215,60 +281,6 @@ body > nav a:hover {
 	height: 100%;
 }
 
-.callout {
-	display: block;
-	padding: 20px;
-	background-color: #fcc904;
-	background-color: rgba(245,192,13,0.95);
-	box-shadow: -4px -3px 8px 0px rgba(50, 50, 50, 0.75);
-}
-.callout blockquote {
-	border-left: 0;
-	padding: 0;
-	margin-bottom: 0;
-}
-.callout blockquote,
-.callout blockquote p {
-	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B';
-	font-weight: 700;
-	letter-spacing: -0.025em;
-	font-size: 58px;
-	line-height: 64px;
-	color: #fff;
-}
-.callout blockquote small {
-	margin-top: 20px;
-	font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B';
-	font-weight: 400;
-	font-style: normal;
-	font-size: 26px;
-	line-height: 1em;
-	color: #fff;
-	text-align: right;
-}
-
-.cta {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	text-align: center;
-}
-.cta a {
-	display: block;
-	width: 300px;
-	margin: auto;
-	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
-	font-size: 30px;
-	line-height: 1em;
-	font-weight: 800;
-	font-style: normal;
-	letter-spacing: -0.025em;
-	color: #fff;
-	text-decoration: underline;
-	padding: 25px 0;
-	background-color: #222;
-}
 .parallax-header-inner .cta {
 	left: auto;
 }
@@ -286,7 +298,7 @@ body > nav a:hover {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	padding: 150px 0;
+	padding: 100px 0;
 }
 .parallax-header .parallax-photo {
 	padding-top: 0;
@@ -312,7 +324,7 @@ body > nav a:hover {
 	display: block;
 	width: 70%;
 	position: absolute;
-	bottom: -0.25em;
+	bottom: -0.27em;
 	left: 0;
 	font-size: 120px;
 	line-height: 1em;
@@ -350,7 +362,7 @@ footer nav a:hover { text-decoration: underline; }
 	font-weight: 200;
 	font-style: normal;
 	font-size: 36px;
-	line-height: 1em;
+	line-height: 1.25em;
 	letter-spacing: -0.045em;
 	font-style: normal;
 	text-align: center;

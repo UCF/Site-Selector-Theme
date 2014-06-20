@@ -160,6 +160,12 @@ Generic.PostTypeSearch = function($) {
 }
 
 
+/* Detect touch-enabled browsers.  http://stackoverflow.com/a/19201258 */
+function isTouchDevice() {
+    return !!('ontouchstart' in window) || (!!('onmsgesturechange' in window) && !!window.navigator.maxTouchPoints);
+}
+
+
 /* Assign browser-specific body classes on page load */
 var addBodyClasses = function($) {
 	var bodyClass = '';
@@ -182,7 +188,7 @@ var parallaxPhotos = function($) {
 		return false;
 	}
 	var toggleStellar = function() {
-		if (isTabletSize()) {
+		if (isTabletSize() || isTouchDevice()) {
 			if ($(window).data('plugin_stellar')) {
 				$(window).data('plugin_stellar').destroy();
 				$('.parallax-photo')
@@ -208,7 +214,12 @@ var parallaxPhotos = function($) {
 /* Fit subpage title text within the heading's set width */
 var subpageTitleSize = function($) {
 	var h1 = $('.parallax-header h1');
-	h1.fitText(0.7, { minFontSize: '20px', maxFontSize: '120px' });
+	if ($('body').hasClass('ie8')) {
+		h1.fitText(0.75, { minFontSize: '20px', maxFontSize: '120px' });
+	}
+	else {
+		h1.fitText(0.7, { minFontSize: '20px', maxFontSize: '120px' });
+	}
 }
 
 
@@ -224,7 +235,6 @@ var styleGformButtons = function($) {
 
 if (typeof jQuery != 'undefined'){
 	jQuery(document).ready(function($) {
-		//Webcom.slideshow($);
 		Webcom.analytics($);
 		Webcom.handleExternalLinks($);
 		Webcom.loadMoreSearchResults($);
