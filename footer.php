@@ -14,9 +14,9 @@
 								));
 							?>
 						</nav>
-						<p id="footer-cta">We&rsquo;re looking for our next great partner. <?php print get_cta_link(); ?></p>
-						<p id="footer-logo">
-							<a target="_blank" href="http://www.ucf.edu/"><img src="<?=THEME_IMG_URL?>/logo.png" alt="Go to UCF.edu" title="Go to UCF.edu" /></a>
+						<p class="footer-cta">We&rsquo;re looking for our next great partner. <?php print get_cta_link(); ?></p>
+						<p class="footer-logo">
+							<a target="_blank" href="http://www.ucf.edu/">Go to ucf.edu</a>
 						</p>
 					</div>
 				</div>
