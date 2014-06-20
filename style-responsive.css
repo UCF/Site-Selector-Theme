@@ -44,7 +44,7 @@
 }
 @media all and (max-width: 768px) {
 	.parallax-photo {
-		background-attachment: scroll; /* reset iPad portrait */
+		background-attachment: scroll; /* make sure iPad portrait is reset */
 	}
 }
 

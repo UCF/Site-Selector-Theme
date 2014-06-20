@@ -160,12 +160,6 @@ Generic.PostTypeSearch = function($) {
 }
 
 
-/* Detect touch-enabled browsers.  http://stackoverflow.com/a/19201258 */
-function isTouchDevice() {
-    return !!('ontouchstart' in window) || (!!('onmsgesturechange' in window) && !!window.navigator.maxTouchPoints);
-}
-
-
 /* Assign browser-specific body classes on page load */
 var addBodyClasses = function($) {
 	var bodyClass = '';
@@ -187,13 +181,21 @@ var parallaxPhotos = function($) {
 		}
 		return false;
 	}
+	/* Detect touch-enabled browsers.  (Modernizr check) */
+	function isTouchDevice() {
+	    return ('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch;
+	}
+
 	var toggleStellar = function() {
 		if (isTabletSize() || isTouchDevice()) {
 			if ($(window).data('plugin_stellar')) {
 				$(window).data('plugin_stellar').destroy();
-				$('.parallax-photo')
-					.css('background-position', '50% 0px');
 			}
+			$('.parallax-photo')
+				.css({
+					'background-position': '50% 0px',
+					'background-attachment': 'scroll',
+				});
 		}
 		else {
 			$(window).stellar({
