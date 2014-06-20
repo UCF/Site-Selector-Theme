@@ -85,11 +85,6 @@
 }
 
 @media all and (max-width: 1199px) and (min-width: 768px) {
-	.page-content {
-		padding-top: 55px;
-		padding-bottom: 55px;
-	}
-
 	.page-base h1 {
 		margin-top: 20px; /* Add extra space btwn content and navbar */
 	}
@@ -220,7 +215,10 @@
 		padding-right: 0;
 	}
 
-	.page-content { padding-top: 30px; padding-bottom: 30px; }
+	.page-content {
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
 	.page-content [class*="span"] {
 		padding-bottom: 10px;
 	}
@@ -235,7 +233,8 @@
 		font-size: 14px;
 		padding: 0 10px;
 	}
-	body > nav {
+
+	nav.header-nav {
 		padding: 10px 0;
 	}
 

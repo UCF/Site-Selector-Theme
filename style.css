@@ -24,6 +24,12 @@ li {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+a {
+	color: #dfaf0d;
+}
+a:visited {
+	color: #dfaf0d;
+}
 
 h2,
 .h2,
@@ -92,13 +98,14 @@ blockquote p {
 	line-height: 1.3em;
 }
 blockquote small {
+	display: block;
+	margin-top: 20px;
+	text-align: left;
 	font-family: 'Gotham SSm 5i', 'Gotham SSm A', 'Gotham SSm B';
 	font-weight: 500;
 	font-style: italic;
 	font-size: 20px;
 	color: #222;
-	display: inline;
-	padding-left: 10px;
 }
 
 hr {
@@ -161,15 +168,12 @@ button.btn {
 	color: #fff;
 }
 .callout blockquote small {
-	display: block;
-	margin-top: 20px;
 	font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B';
 	font-weight: 400;
 	font-style: normal;
 	font-size: 26px;
 	line-height: 1.2em;
 	color: #fff;
-	text-align: left;
 }
 
 .cta {
@@ -260,7 +264,7 @@ nav a {
 	padding: 0 20px;
 }
 
-body > nav {
+nav.header-nav {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -270,8 +274,8 @@ body > nav {
 	background-color: rgba(0,0,0,0.8);
 	padding: 20px 0;
 }
-body > nav a,
-body > nav a:hover {
+nav.header-nav a,
+nav.header-nav a:hover {
 	color: #fff;
 }
 
@@ -359,9 +363,9 @@ body > nav a:hover {
  * Subpages
  **/
 .page-content {
-	padding-top: 80px;
+	padding-top: 55px;
 	padding-right: 20px;
-	padding-bottom: 80px;
+	padding-bottom: 55px;
 	padding-left: 20px;
 }
 
@@ -375,7 +379,7 @@ footer nav {
 }
 footer nav a,
 footer nav a:hover {
-	color: #d5d5d5;
+	color: #d5d5d5 !important; /* wtf firefox */
 }
 footer nav a:hover { text-decoration: underline; }
 
