@@ -94,8 +94,7 @@ name of the directory for Cloud.Typography webfonts in this repository!**
 
 
 ## Custom Post Types
-
-n/a
+* Parallax Feature
 
 
 ## Custom Taxonomies
@@ -105,12 +104,11 @@ n/a
 
 ## Shortcodes
 
-### [slideshow]
-* All top level elements contained within will be displayed as a slideshow.  
-Arguments controlling transition timing and animations are available.
-* Note: this does NOT output a Bootstrap carousel!  To include Bootstrap 
-carousels, use the Wordpress HTML editor and insert your content using the
-required Bootstrap classes.
+### [blockquote]
+* Generates a stylized blockquote.
+
+### [parallax_feature]
+* Adds a Parallax Feature to page/post content.
 
 ### [posttype-list]
 * Custom post types that have defined $use_shortcode as True can automatically
