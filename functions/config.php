@@ -193,8 +193,21 @@ Config::$theme_settings = array(
 							See the <a target="_blank" href="http://www.typography.com/cloud/user-guide/managing-domains">Cloud.Typography docs on managing domains</a> for more info.',
 			'default'     => '//cloud.typography.com/730568/675644/css/fonts.css', /* CSS Key relative to PROD project */
 			'value'       => $theme_options['cloud_font_key'],
-			))
-		),
+		)),
+	),
+	'Settings' => array(
+		new RadioField(array(
+			'name'        => 'Disable WYSIWYG editor on pages',
+			'id'          => THEME_OPTIONS_NAME.'[enable_page_wysiwyg]',
+			'description' => 'Disables the WYSIWYG editor for pages, forcing the text editor for all users.  Recommended for this site to avoid custom markup from being blown away by switching editors.',
+			'default'     => 1,
+			'choices'     => array(
+				'On'  => 1,
+				'Off' => 0,
+			),
+			'value'       => $theme_options['enable_page_wysiwyg'],
+	    )),
+	),
 );
 
 Config::$links = array(

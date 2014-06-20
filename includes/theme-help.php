@@ -18,16 +18,62 @@
 				
 				<li class="section" id="posting">
 					<h3>Posting</h3>
-					<p>Posting is fun, do it.</p>
+					<p>
+						This theme is written with the assumption that content editors have a fundamental understanding of writing HTML and generating
+						rows and columns using the Twitter Bootstrap 2.x CSS framework.  Page content should always be edited using the content text editor,
+						NOT the WYSIWYG (TinyMCE) editor.
+					</p>
+					<p>
+						Pages are constructed without a base .container, .row or .span, due to the nature of the content on this site, which frequently
+						requires breaking out of the Bootstrap grid for full-width content.  To create rows and columns of content, you'll need to start
+						the .container and .row divs first.
+					</p>
+
+					<h4>Utility classes</h4>
+					<p>
+						Utility classes provided by Bootstrap should be used for styling and positioning content.  In addition to these, a few custom classes
+						have been added for this theme for greater customization:
+					</p>
+					<table>
+						<tr>
+							<th scope="col">Class</th>
+							<th scope="col">Description</th>
+						</tr>
+						<tr>
+							<td>.whitespace</td>
+							<td>Adds 50px top- and bottom-padding to the element.  Padding is removed at mobile sizes.</td>
+						</tr>
+						<tr>
+							<td>.whitespace-2x</td>
+							<td>Adds 90px top- and bottom-padding to the element.  Padding is removed at mobile sizes.</td>
+						</tr>
+						<tr>
+							<td>.whitespace-xs</td>
+							<td>Adds 20px top- and bottom-padding to the element.  Padding is removed at mobile sizes.</td>
+						</tr>
+						<tr>
+							<td>.h1</td>
+							<td>Styles text with the font family and styles of a h1.  Recommended for use on headings which should look larger or smaller than the default heading styles.</td>
+						</tr>
+						<tr>
+							<td>.h2</td>
+							<td>Styles text with the font family and styles of a h2.  Recommended for use on headings which should look larger or smaller than the default heading styles.</td>
+						</tr>
+						<tr>
+							<td>.h3</td>
+							<td>Styles text with the font family and styles of a h3.  Recommended for use on headings which should look larger or smaller than the default heading styles.</td>
+						</tr>
+					</table>
 				</li>
 				
 				<li class="section" id="shortcodes">
 					<h3>Shortcodes</h3>
 					
-					<?php if (isset($shortcode_tags['slideshow'])) { ?>
-						
-					<h4>slideshow</h4>
-					<p>Create a javascript slideshow of each top level element in the shortcode.  All attributes are optional, but may default to less than ideal values.  Available attributes:</p>
+					<h4>blockquote</h4>
+					<p>
+						Create a stylized blockquote.  Requires content between its start and end tags.  Only a 
+						<strong>single line of text</strong> (no line breaks or new paragraphs) is permitted between the shortcode tags.
+					</p>
 					<table>
 						<tr>
 							<th scope="col">Name</th>
@@ -35,39 +81,38 @@
 							<th scope="col">Default Value</th>
 						</tr>
 						<tr>
-							<td>height</td>
-							<td>CSS height of the outputted slideshow</td>
-							<td>100px</td>
+							<td>source</td>
+							<td>Who said the quote. (optional)</td>
+							<td>n/a</td>
 						</tr>
 						<tr>
-							<td>width</td>
-							<td>CSS width of the outputted slideshow</th>
-							<td>100%</td>
-						</tr>
-						<tr>
-							<td>transition</td>
-							<td>Length of transition in milliseconds</td>
-							<td>1000</td>
-						</tr>
-						<tr>
-							<td>cycle</td>
-							<td>Length of each cycle in milliseconds</td>
-							<td>5000</td>
-						</tr>
-						<tr>
-							<td>animation</td>
-							<td>The animation type, one of: 'slide' or 'fade'</td>
-							<td>slide</td>
+							<td>cite</td>
+							<td>Citing of where the quote came from. (optional)</td>
+							<td>n/a</td>
 						</tr>
 					</table>
 					<p>Example:
-<pre><code>[slideshow height="500px" transition="500" cycle="2000"]
-&lt;img src="http://some.image.com" .../&gt;
-&lt;div class="robots"&gt;Robots are coming!&lt;/div&gt;
-&lt;p&gt;I'm a slide!&lt;/p&gt;
-[/slideshow]</code></pre>
+<pre><code>[blockquote source="UCF President John Hitt"]Research advances our understanding of the world and benefits our economy, both of which make our lives better.[/blockquote]</code></pre>
 
-					<?php } ?>
+
+					<h4>parallax_feature</h4>
+					<p>
+						Includes a Parallax Feature within your post/page content.
+					</p>
+					<table>
+						<tr>
+							<th scope="col">Name</th>
+							<th scope="col">Description</th>
+							<th scope="col">Default Value</th>
+						</tr>
+						<tr>
+							<td>title</td>
+							<td>The title of the Parallax Feature.</td>
+							<td>n/a</td>
+						</tr>
+					</table>
+					<p>Example:
+<pre><code>[parallax_feature title="Campus"]</code></pre>
 					
 					
 					

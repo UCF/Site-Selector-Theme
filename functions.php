@@ -18,6 +18,21 @@ function get_theme_option($key) {
 
 
 /**
+ * Disable the standard wysiwyg editor for this theme to prevent markup from being blown away by
+ * WYSIWYG users.
+ **/
+function disable_wysiwyg($c) {
+    global $post_type;
+
+    if ('page' == $post_type && get_theme_option('enable_page_wysiwyg') == 1) {
+        return false;
+    }
+    return $c;
+}
+add_filter('user_can_richedit', 'disable_wysiwyg');
+
+
+/**
  * Returns the url of the parallax feature's/page's featured image by the
  * size specified.
  *
