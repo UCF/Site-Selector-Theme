@@ -185,7 +185,41 @@
 	.whitespace-2x + .whitespace-2x {
 		padding-top: 0;
 	}
-	
+
+	nav.header-nav {
+		height: 20px;
+		max-height: 20px;
+		overflow: hidden;
+		transition: max-height 0.5s ease-in-out;
+	}
+	.mobile-nav-toggle {
+		display: block;
+	}
+	nav.header-nav.mobile-active {
+		height: auto;
+		max-height: 1000px; /* Some high value to trigger the css transition (css transitions don't work when transitioning to value of 'auto') */
+	}
+	nav.header-nav.mobile-active .mobile-nav-toggle {
+		color: #DFAF0D;
+	}
+	nav.header-nav.mobile-active .hamburger {
+		border-color: #DFAF0D;
+	}
+	nav.header-nav ul li {
+		display: block;
+		width: 100%;
+		margin: 3px 0;
+	}
+	nav.header-nav ul li:first-child {
+		padding-top: 35px;
+	}
+	nav.header-nav ul li a {
+		display: block;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	.page-content { padding-top: 30px; padding-bottom: 30px; }
 	.page-content [class*="span"] {
 		padding-bottom: 10px;

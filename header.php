@@ -50,7 +50,8 @@
 		
 	</head>
 	<body class="<?=body_classes()?>">
-		<nav>
+		<nav class="header-nav">
+			<a class="mobile-nav-toggle" href="#"><div class="hamburger"></div>Menu</a>
 			<?=wp_nav_menu(array(
 				'theme_location' => 'header-menu',
 				'container' => false,

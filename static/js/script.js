@@ -233,6 +233,16 @@ var styleGformButtons = function($) {
 }
 
 
+/* Toggle mobile nav */
+var mobileNavToggle = function($) {
+	$('nav.header-nav .mobile-nav-toggle')
+		.on('click', function() {
+			$(this).parent().toggleClass('mobile-active');
+		});
+}
+
+
+
 if (typeof jQuery != 'undefined'){
 	jQuery(document).ready(function($) {
 		Webcom.analytics($);
@@ -247,5 +257,6 @@ if (typeof jQuery != 'undefined'){
 		parallaxPhotos($);
 		subpageTitleSize($);
 		styleGformButtons($);
+		mobileNavToggle($);
 	});
 }else{console.log('jQuery dependancy failed to load');}

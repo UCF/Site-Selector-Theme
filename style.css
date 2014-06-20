@@ -219,6 +219,28 @@ button.btn {
 nav {
 	text-align: center;
 }
+.mobile-nav-toggle {
+	display: none;
+	position: absolute;
+	top: 15px;
+	right: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.mobile-nav-toggle:hover,
+.mobile-nav-toggle:active,
+.mobile-nav-toggle:visited {
+	text-decoration: none;
+}
+.hamburger {
+	float: right;
+	border-bottom: 7px double #fff;
+	border-top: 2px solid #fff;
+	content: "";
+	height: 3px;
+	width: 24px;
+	margin-left: 10px;
+}
 nav ul {
 	list-style-type: none;
 	margin: 0;
