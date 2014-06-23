@@ -83,6 +83,36 @@ h5,
 h6 {
 	line-height: 1em;
 }
+/*
+ * Try to catch heading groups and apply extra spacing between copy as necessary.
+ * If spacing between .span's is adjusted at certain breakpoints, be sure to update this.
+ */
+p + h1,
+p + .h1,
+ol + h1,
+ol + .h1,
+ul + h1,
+ul + .h1,
+p + h2,
+p + .h2,
+ol + h2,
+ol + .h2,
+ul + h2,
+ul + .h2,
+p + h3,
+p + .h3,
+ol + h3,
+ol + .h3,
+ul + h3,
+ul + .h3,
+p + h4,
+p + .h4,
+ol + h4,
+ol + .h4,
+ul + h4,
+ul + .h4 {
+	margin-top: 30px;
+}
 
 blockquote {
 	border-left: 0;
@@ -113,6 +143,9 @@ hr {
 	border-top-color: #dfaf0d;
 	border-bottom-color: transparent;
 	margin: 30px 0;
+}
+hr.gray {
+	border-top-color: #eee;
 }
 
 iframe,

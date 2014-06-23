@@ -63,6 +63,10 @@
 							<td>.h3</td>
 							<td>Styles text with the font family and styles of a h3.  Recommended for use on headings which should look larger or smaller than the default heading styles.</td>
 						</tr>
+						<tr>
+							<td>.gray (for hr only)</td>
+							<td>Creates a gray horizontal rule (replacing the default gold color.)  Recommended for dividing subsections where the default gold hr has already been used to define a parent section.</td>
+						</tr>
 					</table>
 				</li>
 				

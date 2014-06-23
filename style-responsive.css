@@ -237,6 +237,10 @@
 	.page-content [class*="span"] {
 		padding-bottom: 10px;
 	}
+	.page-content .span12 {
+		/* Assume this contains a heading above another set of columns, which doesn't need padding. */
+		padding-bottom: 0;
+	}
 
 	.parallax-content .container {
 		padding-left: 20px;
