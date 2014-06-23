@@ -123,7 +123,7 @@ function get_parallax_page_header($page_id) {
 
 
 /**
- * Displays a call to action link.
+ * Displays a call to action link, using the page link provided in Theme Options.
  **/
 function get_cta_link() {
 	$link = get_permalink(get_post(get_theme_option('cta'))->ID);

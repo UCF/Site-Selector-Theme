@@ -8,8 +8,10 @@
  * from where the background image is pushed upward on scroll.
  **/
 
-/* Full-size (x-large) screens (1200px+ wide) */
-@media all and (min-width: 1200px) {
+/* Full-size (x-large) screens (1200x+ wide) */
+	@media all and (min-width: 1200px) {
+}
+
  	.parallax-feature .parallax-photo {
  		height: 800px;
  	}
@@ -77,6 +79,14 @@
 /**
  * Non-parallax image overrides:
  **/
+@media all and (min-width: 1200px) {
+	/* Add extra spacing btwn navbar and page content for basic subpages (w/o parallax headings) */
+	.page-base .page-content {
+		padding-top: 75px;
+		padding-bottom: 75px;
+	}
+}
+
 @media all and (max-width: 1199px) and (min-width: 979px) {
 	.parallax-header h1 {
 		width: 65%;
@@ -132,6 +142,11 @@
 		font-size: 26px;
 		width: 270px;
 		padding: 20px 0;
+	}
+
+	.footer-cta,
+	.footer-logo {
+		margin-bottom: 40px;
 	}
 }
 

@@ -24,9 +24,9 @@ li {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-a {
-	color: #dfaf0d;
-}
+a,
+a:hover,
+a:active,
 a:visited {
 	color: #dfaf0d;
 }
@@ -106,6 +106,7 @@ blockquote small {
 	font-style: italic;
 	font-size: 20px;
 	color: #222;
+	line-height: 1.3em;
 }
 
 hr {
@@ -163,8 +164,8 @@ button.btn {
 	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B';
 	font-weight: 700;
 	letter-spacing: -0.025em;
-	font-size: 58px;
-	line-height: 64px;
+	font-size: 48px;
+	line-height: 1em;
 	color: #fff;
 }
 .callout blockquote small {
@@ -253,6 +254,7 @@ nav ul {
 nav ul li {
 	display: inline-block;
 	line-height: 1em;
+	padding: 10px 0;
 }
 nav a {
 	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
@@ -272,7 +274,7 @@ nav.header-nav {
 	z-index: 999;
 	background-color: #333;
 	background-color: rgba(0,0,0,0.8);
-	padding: 20px 0;
+	padding: 10px 0; /* Creates 20px spacing btwn edges of black bar and list items */
 }
 nav.header-nav a,
 nav.header-nav a:hover {

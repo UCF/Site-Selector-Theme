@@ -336,6 +336,19 @@ class ParallaxFeature extends CustomPostType {
 		$use_metabox    = True,
 		$taxonomies     = array();
 
+	/**
+	 * Grab array of pages for CTA link options
+	 **/
+	public function get_page_options() {
+		$pages = get_posts(array('post_type' => 'page'));
+		$pages_array = array();
+		foreach ($pages as $page) {
+			$pages_array[$page->post_title] = $page->ID;
+		}
+
+		return $pages_array;
+	}
+
 	public function fields() {
 		$prefix = $this->options('name').'_';
 		return array(
@@ -369,9 +382,22 @@ class ParallaxFeature extends CustomPostType {
 			),
 			array(
 				'name' => 'Display CTA',
-				'desc' => 'Display a "Partner With Us" link in the bottom-center edge of the feature.',
+				'desc' => 'Display a call to action button in the bottom-center edge of the feature.',
 				'id' => $prefix.'display_cta',
 				'type' => 'checkbox'
+			),
+			array(
+				'name' => 'CTA Text',
+				'desc' => 'Text within the call to action button.',
+				'id' => $prefix.'cta_text',
+				'type' => 'text'
+			),
+			array(
+				'name' => 'CTA Link to Page',
+				'desc' => 'Page that the call to action button links to.',
+				'id' => $prefix.'cta_link',
+				'type' => 'select',
+				'options' => $this->get_page_options(),
 			),
 		);
 	}

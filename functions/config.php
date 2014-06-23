@@ -72,8 +72,8 @@ Config::$custom_post_types = array(
 Config::$body_classes = array('default',);
 
 /**
-* Grab array of Issue posts for Config::$theme_settings:
-**/
+ * Grab array of pages for Config::$theme_settings:
+ **/
 $pages = get_posts(array('post_type' => 'page'));
 $pages_array = array();
 foreach ($pages as $page) {
@@ -142,7 +142,7 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['organization_name'],
 		)),
 		new SelectField(array(
-			'name'        => 'Call to Action link',
+			'name'        => 'Global Call to Action link',
 			'id'          => THEME_OPTIONS_NAME.'[cta]',
 			'description' => 'Page where the "Partner with Us" links used on the site direct to.',
 			'choices'     => $pages_array,
