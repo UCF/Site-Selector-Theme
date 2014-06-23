@@ -134,4 +134,14 @@ function get_cta_link() {
 	return ob_get_clean();
 }
 
+
+/**
+ * Hide unused admin tools (Links, Comments, etc)
+ **/
+function hide_admin_links() {
+	remove_menu_page('link-manager.php');
+	remove_menu_page('edit-comments.php');
+}
+add_action('admin_menu', 'hide_admin_links');
+
 ?>
