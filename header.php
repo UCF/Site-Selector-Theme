@@ -57,7 +57,7 @@
 				'container' => false,
 				'menu_class' => 'menu '.get_header_styles(),
 				'menu_id' => 'header-menu',
-				'walker' => new Bootstrap_Walker_Nav_Menu()
+				'depth' => 1
 				));
 			?>
 		</nav>

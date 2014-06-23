@@ -9,8 +9,7 @@
 								'menu_class' => 'menu horizontal', 
 								'menu_id' => 'footer-menu', 
 								'fallback_cb' => false,
-								'depth' => 1,
-								'walker' => new Bootstrap_Walker_Nav_Menu()
+								'depth' => 1
 								));
 							?>
 						</nav>

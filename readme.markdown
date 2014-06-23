@@ -4,7 +4,7 @@ WordPress theme built off of UCF's Generic theme.
 
 
 ## Installation Requirements:
-* n/a
+* GravityForms
 
 
 ## Deployment
