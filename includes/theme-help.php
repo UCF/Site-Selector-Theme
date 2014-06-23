@@ -67,6 +67,10 @@
 							<td>.gray (for hr only)</td>
 							<td>Creates a gray horizontal rule (replacing the default gold color.)  Recommended for dividing subsections where the default gold hr has already been used to define a parent section.</td>
 						</tr>
+						<tr>
+							<td>.full-width</td>
+							<td>Forces an element to be the full width of its parent.</td>
+						</tr>
 					</table>
 				</li>
 				
