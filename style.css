@@ -19,7 +19,7 @@ ul,
 li {
 	font-family: Georgia, serif;
 	font-size: 16px;
-	line-height: 28px;
+	line-height: 26px;
 	color: #222;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -81,7 +81,7 @@ h3,
 h4,
 h5,
 h6 {
-	line-height: 1em;
+	line-height: 1.2em;
 }
 /*
  * Try to catch heading groups and apply extra spacing between copy as necessary.
