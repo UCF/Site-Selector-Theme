@@ -53,7 +53,7 @@
 		<nav class="header-nav">
 			<a class="mobile-nav-toggle" href="#"><div class="hamburger"></div>Menu</a>
 			<?=wp_nav_menu(array(
-				'theme_location' => 'header-menu',
+				'theme_location' => 'nav-menu',
 				'container' => false,
 				'menu_class' => 'menu '.get_header_styles(),
 				'menu_id' => 'header-menu',
