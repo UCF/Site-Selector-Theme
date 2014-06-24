@@ -48,7 +48,7 @@ function get_parallax_feature_img($post_id, $size, $cpt_field) {
 	$custom_thumb = wp_get_attachment_url(get_post_meta($post_id, $cpt_field, true));
 
 	$thumb = $custom_thumb ? $custom_thumb : $generated_thumb[0];
-	return $thumb;
+	return preg_replace('(^https?://)', '//', $thumb);
 }
 
 
