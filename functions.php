@@ -48,7 +48,7 @@ function get_parallax_feature_img($post_id, $size, $cpt_field) {
 	$custom_thumb = wp_get_attachment_url(get_post_meta($post_id, $cpt_field, true));
 
 	$thumb = $custom_thumb ? $custom_thumb : $generated_thumb[0];
-	return preg_replace('(^https?://)', '//', $thumb);
+	return preg_replace('/^http(s)?\:/', '', $thumb);
 }
 
 
@@ -67,7 +67,7 @@ function get_parallax_feature_css($post_id, $d_cpt_field, $t_cpt_field, $m_cpt_f
 	$featured_img_d = get_parallax_feature_img($post_id, 'parallax_feature-desktop', $d_cpt_field);
 	$featured_img_t = get_parallax_feature_img($post_id, 'parallax_feature-tablet', $t_cpt_field);
 	$featured_img_m = get_parallax_feature_img($post_id, 'parallax_feature-mobile', $m_cpt_field);
-	if ($featured_img_f) { $featured_img_f = $featured_img_f[0]; }
+	if ($featured_img_f) { $featured_img_f = preg_replace('/^http(s)?\:/', '', $featured_img_f[0]); }
 
 	ob_start();
 ?>
