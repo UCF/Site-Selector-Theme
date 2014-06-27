@@ -9,9 +9,7 @@
  **/
 
 /* Full-size (x-large) screens (1200x+ wide) */
-	@media all and (min-width: 1200px) {
-}
-
+@media all and (min-width: 1200px) {
  	.parallax-feature .parallax-photo {
  		height: 800px;
  	}
