@@ -304,7 +304,7 @@ nav a {
 
 nav.header-nav {
 	position: absolute;
-	top: 0;
+	top: 50px; /* ucf header */
 	right: 0;
 	left: 0;
 	z-index: 999;

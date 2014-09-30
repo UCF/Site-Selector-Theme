@@ -195,6 +195,7 @@
 	}
 
 	nav.header-nav {
+		top: auto; /* ucf header */
 		height: 20px;
 		max-height: 20px;
 		overflow: hidden;
