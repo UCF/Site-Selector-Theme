@@ -477,7 +477,7 @@ footer nav a:hover { text-decoration: underline; }
 	margin: .625em 0 .5em;
 }
 
-.gform_wrapper * {
+.gform_wrapper input {
 	box-sizing: content-box;
 }
 
