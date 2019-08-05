@@ -126,11 +126,15 @@ function get_parallax_page_header($page_id) {
  * Displays a call to action link, using the page link provided in Theme Options.
  **/
 function get_cta_link() {
-	$link = get_permalink(get_post(get_theme_option('cta'))->ID);
+	$cta = get_theme_option('cta');
+	$cta_post = $cta ? get_post( $cta ) : null;
+	$link = ( $cta_post instanceof WP_Post ) ? get_permalink( $cta_post ) : null;
 	ob_start();
+	if ( $link ):
 ?>
 	<a href="<?=$link?>">Partner with us.</a>
 <?php
+	endif;
 	return ob_get_clean();
 }
 

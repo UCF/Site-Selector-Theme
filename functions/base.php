@@ -1135,19 +1135,22 @@ function opengraph_setup(){
 		return;
 	}
 
-	if (!(bool)$options['enable_og']){return;}
 	if (is_search()){return;}
-
 	global $post, $page;
 	setup_postdata($post);
-
+	$title       = '';
+	$url         = '';
+	$site_name   = '';
+	$description = '';
 	if (is_front_page()){
 		$title       = htmlentities(get_bloginfo('name'));
 		$url         = get_bloginfo('url');
 		$site_name   = $title;
-	}else{
-		$title     = htmlentities($post->post_title);
-		$url       = get_permalink($post->ID);
+	} else {
+		if ( $post ) {
+			$title = htmlentities($post->post_title);
+			$url   = get_permalink($post->ID);
+		}
 		$site_name = htmlentities(get_bloginfo('name'));
 	}
 
@@ -1172,22 +1175,28 @@ function opengraph_setup(){
 		}
 	}
 
-	$metas = array(
-		array('property' => 'og:title'      , 'content' => $title),
-		array('property' => 'og:url'        , 'content' => $url),
-		array('property' => 'og:site_name'  , 'content' => $site_name),
-		array('property' => 'og:description', 'content' => $description),
-	);
+	$metas = array();
+	if ( $title ) {
+		$metas[] = array('property' => 'og:title', 'content' => $title);
+	}
+	if ( $url ) {
+		$metas[] = array('property' => 'og:url', 'content' => $url);
+	}
+	if ( $site_name ) {
+		$metas[] = array('property' => 'og:site_name', 'content' => $site_name);
+	}
+	if ( $description ) {
+		$metas[] = array('property' => 'og:description', 'content' => $description);
+	}
 
 	# Include image if available
-	if (!is_front_page() and has_post_thumbnail($post->ID)){
+	if (!is_front_page() && has_post_thumbnail($post)){
 		$image = wp_get_attachment_image_src(
 			get_post_thumbnail_id( $post->ID ),
 			'single-post-thumbnail'
 		);
 		$metas[] = array('property' => 'og:image', 'content' => $image[0]);
 	}
-
 
 	# Include admins if available
 	$admins = isset( $options['fb_admins'] ) ? trim( $options['fb_admins'] ) : '';
