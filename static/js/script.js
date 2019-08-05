@@ -30,7 +30,7 @@ Generic.PostTypeSearch = function($) {
 				typing_timer = null,
 				typing_delay = 300, // milliseconds
 
-				prev_post_id_sum = null, // Sum of result post IDs. Used to cache results 
+				prev_post_id_sum = null, // Sum of result post IDs. Used to cache results
 
 				MINIMUM_SEARCH_MATCH_LENGTH = 2;
 
@@ -128,7 +128,7 @@ Generic.PostTypeSearch = function($) {
 						if(post_id_sum != prev_post_id_sum) {
 							results.empty();
 							prev_post_id_sum = post_id_sum;
-							
+
 
 							// Slice the elements into their respective columns
 							elements_per_column = Math.ceil(elements.length / column_count);
@@ -205,7 +205,7 @@ var parallaxPhotos = function($) {
 			});
 		}
 	}
-	
+
 	toggleStellar();
 	$(window).resize(function() {
 		toggleStellar();
@@ -249,8 +249,7 @@ if (typeof jQuery != 'undefined'){
 	jQuery(document).ready(function($) {
 		Webcom.analytics($);
 		Webcom.handleExternalLinks($);
-		Webcom.loadMoreSearchResults($);
-		
+
 		/* Theme Specific Code Here */
 		Generic.removeExtraGformStyles($);
 		Generic.PostTypeSearch($);
