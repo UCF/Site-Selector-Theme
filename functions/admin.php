@@ -89,7 +89,7 @@ function init_theme_options(){
  * @author Jared Lang
  **/
 function create_utility_pages() {
-	add_utility_page(
+	add_menu_page(
 		__(THEME_OPTIONS_PAGE_TITLE),
 		__(THEME_OPTIONS_PAGE_TITLE),
 		'edit_theme_options',
@@ -97,7 +97,7 @@ function create_utility_pages() {
 		'theme_options_page',
 		'dashicons-admin-generic'
 	);
-	add_utility_page(
+	add_menu_page(
 		__('Help'),
 		__('Help'),
 		'edit_posts',

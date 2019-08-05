@@ -139,12 +139,12 @@ function sc_post_type_search($params=array(), $content='') {
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
-		<? if($params['show_sorting']) { ?>
+		<?php if($params['show_sorting']) { ?>
 		<div class="btn-group post-type-search-sorting">
 			<button class="btn<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i></button>
 			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
 		</div>
-		<? } ?>
+		<?php } ?>
 	<?
 
 	foreach($sections as $id => $section) {
@@ -162,32 +162,32 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 		}
 		?>
-		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
-			<? foreach($section as $section_title => $section_posts) { ?>
-				<? if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
+		<div class="<?=$id?>"<?php if($hide) echo ' style="display:none;"'; ?>>
+			<?php foreach($section as $section_title => $section_posts) { ?>
+				<?php if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
 					<div>
 						<h3><?=esc_html($section_title)?></h3>
 						<div class="row">
-							<? if(count($section_posts) > 0) { ?>
-								<? $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
-								<? foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
-									<? $start = $column_index * $posts_per_column; ?>
-									<? $end   = $start + $posts_per_column; ?>
-									<? if(count($section_posts) > $start) { ?>
+							<?php if(count($section_posts) > 0) { ?>
+								<?php $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
+								<?php foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
+									<?php $start = $column_index * $posts_per_column; ?>
+									<?php $end   = $start + $posts_per_column; ?>
+									<?php if(count($section_posts) > $start) { ?>
 									<div class="<?=$params['column_width']?>">
 										<ul>
-										<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
+										<?php foreach(array_slice($section_posts, $start, $end) as $post) { ?>
 											<li data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
-										<? } ?>
+										<?php } ?>
 										</ul>
 									</div>
-									<? } ?>
-								<? } ?>
-							<? } ?>
+									<?php } ?>
+								<?php } ?>
+							<?php } ?>
 						</div>
 					</div>
-				<? } ?>
-			<? } ?>
+				<?php } ?>
+			<?php } ?>
 		</div>
 		<?
 	}

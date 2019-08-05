@@ -4,7 +4,7 @@
  * Responsible for running code that needs to be executed as wordpress is
  * initializing.  Good place to register scripts, stylesheets, theme elements,
  * etc.
- * 
+ *
  * @return void
  * @author Jared Lang
  **/
@@ -23,17 +23,48 @@ function __init__(){
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 	));
-	foreach(Config::$styles as $style){Config::add_css($style);}
-	foreach(Config::$scripts as $script){Config::add_script($script);}
-	
+
 	global $timer;
 	$timer = Timer::start();
-	
-	wp_deregister_script('l10n');
+
 	set_defaults_for_options();
 }
 add_action('after_setup_theme', '__init__');
 
+
+function sst_is_admin_asset( $asset ) {
+	return isset( $asset['admin'] ) && $asset['admin'] === true ? true : false;
+}
+
+function sst_add_scripts() {
+	foreach( Config::$styles as $style ) {
+		if ( ! sst_is_admin_asset( $style ) ) {
+			Config::add_css( $style );
+		}
+	}
+	foreach( Config::$scripts as $script ) {
+		if ( ! sst_is_admin_asset( $script ) ) {
+			Config::add_script( $script );
+		}
+	}
+	wp_deregister_script('l10n');
+}
+
+add_action( 'wp_enqueue_scripts', 'sst_add_scripts' );
+
+function sst_add_admin_scripts() {
+	foreach( Config::$styles as $style ) {
+		if ( sst_is_admin_asset( $style ) ) {
+			Config::add_css( $style );
+		}
+	}
+	foreach( Config::$scripts as $script ) {
+		if ( sst_is_admin_asset( $script ) ) {
+			Config::add_script( $script );
+		}
+	}
+}
+add_action( 'admin_enqueue_scripts', 'sst_add_admin_scripts' );
 
 
 # Set theme constants
@@ -53,9 +84,9 @@ define('THEME_OPTIONS_NAME', 'theme');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
 
 $theme_options = get_option(THEME_OPTIONS_NAME);
-define('GA_ACCOUNT', $theme_options['ga_account']);
-define('CB_UID', $theme_options['cb_uid']);
-define('CB_DOMAIN', $theme_options['cb_domain']);
+define('GA_ACCOUNT', isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null );
+define('CB_UID', isset ( $theme_options['cb_uid'] ) ? $theme_options['cb_uid'] : null );
+define('CB_DOMAIN', isset( $theme_options['cb_domain'] ) ? $theme_options['cb_domain'] : null );
 
 
 /**
@@ -91,14 +122,14 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[gw_verify]',
 			'description' => 'Example: <em>9Wsa3fspoaoRE8zx8COo48-GCMdi5Kd-1qFpQTTXSIw</em>',
 			'default'     => null,
-			'value'       => $theme_options['gw_verify'],
+			'value'       => isset( $theme_options['gw_verify'] ) ? $theme_options['gw_verify'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Google Analytics Account',
 			'id'          => THEME_OPTIONS_NAME.'[ga_account]',
 			'description' => 'Example: <em>UA-9876543-21</em>. Leave blank for development.',
 			'default'     => null,
-			'value'       => $theme_options['ga_account'],
+			'value'       => isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null,
 		)),
 	),
 	'Search' => array(
@@ -221,7 +252,7 @@ Config::$styles = array(
 	THEME_STATIC_URL.'/bootstrap/bootstrap/css/bootstrap.css',
 	THEME_STATIC_URL.'/bootstrap/bootstrap/css/bootstrap-responsive.css',
 	plugins_url( 'gravityforms/css/forms.css' ),
-	//THEME_CSS_URL.'/webcom-base.css', 
+	//THEME_CSS_URL.'/webcom-base.css',
 	get_bloginfo('stylesheet_url'),
 	THEME_URL.'/style-responsive.css'
 );
@@ -257,6 +288,6 @@ function jquery_in_header() {
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js');
     wp_enqueue_script( 'jquery' );
-}    
- 
+}
+
 add_action('wp_enqueue_scripts', 'jquery_in_header');
