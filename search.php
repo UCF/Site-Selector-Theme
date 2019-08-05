@@ -2,7 +2,9 @@
 <?php
 $query = isset( $_GET['s'] ) ? $_GET['s'] : '';
 ?>
-	<div class="row page-content" id="search-results">
+
+<div class="container page-content">
+	<div class="row" id="search-results">
 		<div class="span9">
 			<article>
 				<h1>Search Results</h1>
@@ -28,5 +30,7 @@ $query = isset( $_GET['s'] ) ? $_GET['s'] : '';
 			<?=get_sidebar();?>
 		</div>
 	</div>
-	<?php get_template_part('includes/below-the-fold'); ?>
+</div>
+
+<?php get_template_part('includes/below-the-fold'); ?>
 <?php get_footer();?>
