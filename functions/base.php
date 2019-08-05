@@ -706,7 +706,7 @@ function get_featured_image_url($post) {
  **/
 function get_header_styles() {
 	$options = get_option(THEME_OPTIONS_NAME);
-	$id = $options['bootstrap_menu_styles'];
+	$id = isset( $options['bootstrap_menu_styles'] ) ? $options['bootstrap_menu_styles'] : null;
 
 	switch ($id) {
 		case 'nav-tabs':
@@ -1190,7 +1190,7 @@ function opengraph_setup(){
 
 
 	# Include admins if available
-	$admins = trim($options['fb_admins']);
+	$admins = isset( $options['fb_admins'] ) ? trim( $options['fb_admins'] ) : '';
 	if (strlen($admins) > 0){
 		$metas[] = array('property' => 'fb:admins', 'content' => $admins);
 	}

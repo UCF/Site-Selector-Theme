@@ -137,21 +137,21 @@ Config::$theme_settings = array(
 			'name'        => 'Contact Email',
 			'id'          => THEME_OPTIONS_NAME.'[site_contact]',
 			'description' => 'Contact email address that visitors to your site can use to contact you.',
-			'value'       => $theme_options['site_contact'],
+			'value'       => isset( $theme_options['site_contact'] ) ? $theme_options['site_contact'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Organization Name',
 			'id'          => THEME_OPTIONS_NAME.'[organization_name]',
 			'description' => 'Your organization\'s name',
-			'value'       => $theme_options['organization_name'],
+			'value'       => isset( $theme_options['organization_name'] ) ? $theme_options['organization_name'] : null,
 		)),
 		new SelectField(array(
 			'name'        => 'Global Call to Action link',
 			'id'          => THEME_OPTIONS_NAME.'[cta]',
 			'description' => 'Page where the "Partner with Us" links used on the site direct to.',
 			'choices'     => $pages_array,
-			'default'     => $pages_array[0],
-			'value'       => $theme_options['cta'],
+			'default'     => isset( $pages_array[0] ) ? $pages_array[0] : null,
+			'value'       => isset( $theme_options['cta'] ) ? $theme_options['cta'] : null,
 		)),
 	),
 	'Social' => array(
@@ -171,20 +171,20 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[fb_admins]',
 			'description' => 'Comma seperated facebook usernames or user ids of those responsible for administrating any facebook pages created from pages on this site. Example: <em>592952074, abe.lincoln</em>',
 			'default'     => null,
-			'value'       => $theme_options['fb_admins'],
+			'value'       => isset( $theme_options['fb_admins'] ) ? $theme_options['fb_admins'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Facebook URL',
 			'id'          => THEME_OPTIONS_NAME.'[facebook_url]',
 			'description' => 'URL to the facebook page you would like to direct visitors to.  Example: <em>https://www.facebook.com/CSBrisketBus</em>',
 			'default'     => null,
-			'value'       => $theme_options['facebook_url'],
+			'value'       => isset( $theme_options['facebook_url'] ) ? $theme_options['facebook_url'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Twitter URL',
 			'id'          => THEME_OPTIONS_NAME.'[twitter_url]',
 			'description' => 'URL to the twitter user account you would like to direct visitors to.  Example: <em>http://twitter.com/csbrisketbus</em>',
-			'value'       => $theme_options['twitter_url'],
+			'value'       => isset( $theme_options['twitter_url'] ) ? $theme_options['twitter_url'] : null,
 		)),
 	),
 	'Web Fonts' => array(
@@ -248,7 +248,7 @@ Config::$scripts = array(
 Config::$metas = array(
 	array('charset' => 'utf-8',),
 );
-if ($theme_options['gw_verify']){
+if ( isset( $theme_options['gw_verify'] ) && $theme_options['gw_verify'] ) {
 	Config::$metas[] = array(
 		'name'    => 'google-site-verification',
 		'content' => htmlentities($theme_options['gw_verify']),
