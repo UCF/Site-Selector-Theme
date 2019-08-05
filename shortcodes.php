@@ -3,9 +3,9 @@ function sc_search_form() {
 	ob_start();
 	?>
 	<div class="search">
-		<?get_search_form()?>
+		<?php get_search_form(); ?>
 	</div>
-	<?
+	<?php
 	return ob_get_clean();
 }
 add_shortcode('search_form', 'sc_search_form');
@@ -73,7 +73,7 @@ function sc_post_type_search($params=array(), $content='') {
 			));
 		}
 	</script>
-	<?
+	<?php
 
 	// Split up this post type's posts by term
 	$by_term = array();
@@ -145,7 +145,7 @@ function sc_post_type_search($params=array(), $content='') {
 			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
 		</div>
 		<?php } ?>
-	<?
+	<?php
 
 	foreach($sections as $id => $section) {
 		$hide = false;
@@ -189,9 +189,9 @@ function sc_post_type_search($params=array(), $content='') {
 				<?php } ?>
 			<?php } ?>
 		</div>
-		<?
+		<?php
 	}
-	?> </div> <?
+	?> </div> <?php
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
@@ -201,9 +201,9 @@ add_shortcode('post-type-search', 'sc_post_type_search');
 * Wrap arbitrary text in <blockquote>
 **/
 function sc_blockquote($attr, $content='') {
-	$source = $attr['source'] ? $attr['source'] : null;
-	$cite = $attr['cite'] ? $attr['cite'] : null;
-	$color = $attr['color'] ? $attr['color'] : null;
+	$source = isset( $attr['source'] ) ? $attr['source'] : null;
+	$cite = isset( $attr['cite'] ) ? $attr['cite'] : null;
+	$color = isset( $attr['color'] ) ? $attr['color'] : null;
 
 	$html = '<blockquote';
 	if ($source) {
