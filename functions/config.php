@@ -4,7 +4,7 @@
  * Responsible for running code that needs to be executed as wordpress is
  * initializing.  Good place to register scripts, stylesheets, theme elements,
  * etc.
- * 
+ *
  * @return void
  * @author Jared Lang
  **/
@@ -23,17 +23,48 @@ function __init__(){
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 	));
-	foreach(Config::$styles as $style){Config::add_css($style);}
-	foreach(Config::$scripts as $script){Config::add_script($script);}
-	
+
 	global $timer;
 	$timer = Timer::start();
-	
-	wp_deregister_script('l10n');
+
 	set_defaults_for_options();
 }
 add_action('after_setup_theme', '__init__');
 
+
+function sst_is_admin_asset( $asset ) {
+	return isset( $asset['admin'] ) && $asset['admin'] === true ? true : false;
+}
+
+function sst_add_scripts() {
+	foreach( Config::$styles as $style ) {
+		if ( ! sst_is_admin_asset( $style ) ) {
+			Config::add_css( $style );
+		}
+	}
+	foreach( Config::$scripts as $script ) {
+		if ( ! sst_is_admin_asset( $script ) ) {
+			Config::add_script( $script );
+		}
+	}
+	wp_deregister_script('l10n');
+}
+
+add_action( 'wp_enqueue_scripts', 'sst_add_scripts' );
+
+function sst_add_admin_scripts() {
+	foreach( Config::$styles as $style ) {
+		if ( sst_is_admin_asset( $style ) ) {
+			Config::add_css( $style );
+		}
+	}
+	foreach( Config::$scripts as $script ) {
+		if ( sst_is_admin_asset( $script ) ) {
+			Config::add_script( $script );
+		}
+	}
+}
+add_action( 'admin_enqueue_scripts', 'sst_add_admin_scripts' );
 
 
 # Set theme constants
@@ -53,9 +84,9 @@ define('THEME_OPTIONS_NAME', 'theme');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
 
 $theme_options = get_option(THEME_OPTIONS_NAME);
-define('GA_ACCOUNT', $theme_options['ga_account']);
-define('CB_UID', $theme_options['cb_uid']);
-define('CB_DOMAIN', $theme_options['cb_domain']);
+define('GA_ACCOUNT', isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null );
+define('CB_UID', isset ( $theme_options['cb_uid'] ) ? $theme_options['cb_uid'] : null );
+define('CB_DOMAIN', isset( $theme_options['cb_domain'] ) ? $theme_options['cb_domain'] : null );
 
 
 /**
@@ -91,41 +122,14 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[gw_verify]',
 			'description' => 'Example: <em>9Wsa3fspoaoRE8zx8COo48-GCMdi5Kd-1qFpQTTXSIw</em>',
 			'default'     => null,
-			'value'       => $theme_options['gw_verify'],
+			'value'       => isset( $theme_options['gw_verify'] ) ? $theme_options['gw_verify'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Google Analytics Account',
 			'id'          => THEME_OPTIONS_NAME.'[ga_account]',
 			'description' => 'Example: <em>UA-9876543-21</em>. Leave blank for development.',
 			'default'     => null,
-			'value'       => $theme_options['ga_account'],
-		)),
-	),
-	'Search' => array(
-		new RadioField(array(
-			'name'        => 'Enable Google Search',
-			'id'          => THEME_OPTIONS_NAME.'[enable_google]',
-			'description' => 'Enable to use the google search appliance to power the search functionality.',
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-			'value'       => $theme_options['enable_google'],
-	    )),
-		new TextField(array(
-			'name'        => 'Search Domain',
-			'id'          => THEME_OPTIONS_NAME.'[search_domain]',
-			'description' => 'Domain to use for the built-in google search.  Useful for development or if the site needs to search a domain other than the one it occupies. Example: <em>some.domain.com</em>',
-			'default'     => null,
-			'value'       => $theme_options['search_domain'],
-		)),
-		new TextField(array(
-			'name'        => 'Search Results Per Page',
-			'id'          => THEME_OPTIONS_NAME.'[search_per_page]',
-			'description' => 'Number of search results to show per page of results',
-			'default'     => 10,
-			'value'       => $theme_options['search_per_page'],
+			'value'       => isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null,
 		)),
 	),
 	'Site' => array(
@@ -133,21 +137,21 @@ Config::$theme_settings = array(
 			'name'        => 'Contact Email',
 			'id'          => THEME_OPTIONS_NAME.'[site_contact]',
 			'description' => 'Contact email address that visitors to your site can use to contact you.',
-			'value'       => $theme_options['site_contact'],
+			'value'       => isset( $theme_options['site_contact'] ) ? $theme_options['site_contact'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Organization Name',
 			'id'          => THEME_OPTIONS_NAME.'[organization_name]',
 			'description' => 'Your organization\'s name',
-			'value'       => $theme_options['organization_name'],
+			'value'       => isset( $theme_options['organization_name'] ) ? $theme_options['organization_name'] : null,
 		)),
 		new SelectField(array(
 			'name'        => 'Global Call to Action link',
 			'id'          => THEME_OPTIONS_NAME.'[cta]',
 			'description' => 'Page where the "Partner with Us" links used on the site direct to.',
 			'choices'     => $pages_array,
-			'default'     => $pages_array[0],
-			'value'       => $theme_options['cta'],
+			'default'     => isset( $pages_array[0] ) ? $pages_array[0] : null,
+			'value'       => isset( $theme_options['cta'] ) ? $theme_options['cta'] : null,
 		)),
 	),
 	'Social' => array(
@@ -167,20 +171,20 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[fb_admins]',
 			'description' => 'Comma seperated facebook usernames or user ids of those responsible for administrating any facebook pages created from pages on this site. Example: <em>592952074, abe.lincoln</em>',
 			'default'     => null,
-			'value'       => $theme_options['fb_admins'],
+			'value'       => isset( $theme_options['fb_admins'] ) ? $theme_options['fb_admins'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Facebook URL',
 			'id'          => THEME_OPTIONS_NAME.'[facebook_url]',
 			'description' => 'URL to the facebook page you would like to direct visitors to.  Example: <em>https://www.facebook.com/CSBrisketBus</em>',
 			'default'     => null,
-			'value'       => $theme_options['facebook_url'],
+			'value'       => isset( $theme_options['facebook_url'] ) ? $theme_options['facebook_url'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Twitter URL',
 			'id'          => THEME_OPTIONS_NAME.'[twitter_url]',
 			'description' => 'URL to the twitter user account you would like to direct visitors to.  Example: <em>http://twitter.com/csbrisketbus</em>',
-			'value'       => $theme_options['twitter_url'],
+			'value'       => isset( $theme_options['twitter_url'] ) ? $theme_options['twitter_url'] : null,
 		)),
 	),
 	'Web Fonts' => array(
@@ -221,7 +225,7 @@ Config::$styles = array(
 	THEME_STATIC_URL.'/bootstrap/bootstrap/css/bootstrap.css',
 	THEME_STATIC_URL.'/bootstrap/bootstrap/css/bootstrap-responsive.css',
 	plugins_url( 'gravityforms/css/forms.css' ),
-	//THEME_CSS_URL.'/webcom-base.css', 
+	//THEME_CSS_URL.'/webcom-base.css',
 	get_bloginfo('stylesheet_url'),
 	THEME_URL.'/style-responsive.css'
 );
@@ -244,7 +248,7 @@ Config::$scripts = array(
 Config::$metas = array(
 	array('charset' => 'utf-8',),
 );
-if ($theme_options['gw_verify']){
+if ( isset( $theme_options['gw_verify'] ) && $theme_options['gw_verify'] ) {
 	Config::$metas[] = array(
 		'name'    => 'google-site-verification',
 		'content' => htmlentities($theme_options['gw_verify']),
@@ -257,6 +261,6 @@ function jquery_in_header() {
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js');
     wp_enqueue_script( 'jquery' );
-}    
- 
+}
+
 add_action('wp_enqueue_scripts', 'jquery_in_header');

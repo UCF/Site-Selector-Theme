@@ -1,7 +1,8 @@
-<?php get_header(); the_post();?>
+<?php get_header(); ?>
 <?php
 $home = get_page_by_title('Home');
 if (!$home) {
+	global $post;
 	$home = $post; // get something...
 }
 ?>
