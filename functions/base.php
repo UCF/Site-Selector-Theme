@@ -1587,7 +1587,7 @@ function _show_meta_boxes($post, $meta_box){
 
 			<?php break; case 'select':?>
 				<select name="<?=$field['id']?>" id="<?=$field['id']?>">
-					<option value=""><?=($field['default']) ? $field['default'] : '--'?></option>
+					<option value=""><?=(isset( $field['default'] )) ? $field['default'] : '--'?></option>
 				<?php foreach ($field['options'] as $k=>$v):?>
 					<option <?=($current_value == $v) ? ' selected="selected"' : ''?> value="<?=$v?>"><?=$k?></option>
 				<?php endforeach;?>
