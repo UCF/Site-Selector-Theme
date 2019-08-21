@@ -1568,7 +1568,10 @@ function _show_meta_boxes($post, $meta_box){
 	<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce(basename(__FILE__))?>"/>
 	<table class="form-table">
 	<?php foreach($meta_box['fields'] as $field):
-		$current_value = get_post_meta($post->ID, $field['id'], true);?>
+		$current_value = get_post_meta($post->ID, $field['id'], true);
+		$std           = isset( $field['std'] ) ? $field['std'] : '';
+		$default       = isset( $field['default'] ) ? $field['default'] : '';
+	?>
 		<tr>
 			<th><label for="<?=$field['id']?>"><?=$field['name']?></label></th>
 			<td>
@@ -1580,14 +1583,14 @@ function _show_meta_boxes($post, $meta_box){
 
 			<?php switch ($field['type']):
 				case 'text':?>
-				<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
+				<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $default?>" />
 
 			<?php break; case 'textarea':?>
-				<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
+				<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $std?></textarea>
 
 			<?php break; case 'select':?>
 				<select name="<?=$field['id']?>" id="<?=$field['id']?>">
-					<option value=""><?=($field['default']) ? $field['default'] : '--'?></option>
+					<option value=""><?=($default) ?: '--'?></option>
 				<?php foreach ($field['options'] as $k=>$v):?>
 					<option <?=($current_value == $v) ? ' selected="selected"' : ''?> value="<?=$v?>"><?=$k?></option>
 				<?php endforeach;?>
