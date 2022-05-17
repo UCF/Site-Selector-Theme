@@ -224,7 +224,6 @@ Config::$styles = array(
 	array('admin' => True, 'src' => THEME_CSS_URL.'/admin.css',),
 	THEME_STATIC_URL.'/bootstrap/bootstrap/css/bootstrap.css',
 	THEME_STATIC_URL.'/bootstrap/bootstrap/css/bootstrap-responsive.css',
-	plugins_url( 'gravityforms/css/forms.css' ),
 	//THEME_CSS_URL.'/webcom-base.css',
 	get_bloginfo('stylesheet_url'),
 	THEME_URL.'/style-responsive.css'
