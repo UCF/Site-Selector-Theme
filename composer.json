@@ -1,0 +1,8 @@
+{
+    "name": "ucf/site-selector-theme",
+    "description": "WordPress theme built off of UCF's Generic theme.",
+    "type": "wordpress-theme",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
