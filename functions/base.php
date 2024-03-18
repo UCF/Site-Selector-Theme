@@ -453,7 +453,7 @@ function indent($html, $n){
  * ID needed for the script to work correctly.
  *
  * @author Jim Barnes
- * @since v3.19.4
+ * @since v1.0.18
  *
  * @param string $tag The script tag being filtered
  * @param string $handle The handle of the header script
