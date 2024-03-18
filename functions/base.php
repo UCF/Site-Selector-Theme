@@ -448,18 +448,26 @@ function indent($html, $n){
  * Theme-wide general use functions. (Alphabetized)
  *
  ***************************************************************************/
-
 /**
- * University Header enqueue-ing fix.
- **/
-function add_id_to_ucfhb($url) {
-    if ( (false !== strpos($url, 'bar/js/university-header.js')) || (false !== strpos($url, 'bar/js/university-header-full.js')) ) {
-      remove_filter('clean_url', 'add_id_to_ucfhb', 10, 3);
-      return "$url' id='ucfhb-script";
-    }
-    return $url;
+ * Replaces the ucf-header bar ID with the correct
+ * ID needed for the script to work correctly.
+ *
+ * @author Jim Barnes
+ * @since v1.0.18
+ *
+ * @param string $tag The script tag being filtered
+ * @param string $handle The handle of the header script
+ * @param string $src The source of the script
+ */
+function ucfhb_script_handle( $tag, $handle, $src ) {
+	if ( false !== strpos( $src, 'universityheader.ucf.edu' ) ) {
+		$tag = str_replace( "{$handle}-js", 'ucfhb-script', $tag );
+	}
+
+	return $tag;
 }
-add_filter('clean_url', 'add_id_to_ucfhb', 10, 3);
+
+add_filter( 'script_loader_tag', 'ucfhb_script_handle', 10, 3 );
 
 
 /**
