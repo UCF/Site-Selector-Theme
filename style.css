@@ -17,7 +17,7 @@ p,
 ol,
 ul,
 li {
-	font-family: Georgia, serif;
+	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-size: 16px;
 	line-height: 26px;
 	color: #222;
@@ -38,7 +38,7 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 700;
 	font-style: normal;
 	color: #222;
@@ -47,7 +47,7 @@ h6 {
 
 h1,
 .h1 {
-	font-family: 'Gotham SSm 8r','Gotham SSm A','Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 800;
 	font-style: normal;
 	font-size: 58px;
@@ -120,7 +120,7 @@ blockquote {
 }
 blockquote,
 blockquote p {
-	font-family: 'Gotham SSm 2r', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 200;
 	font-style: normal;
 	color: #222;
@@ -131,7 +131,7 @@ blockquote small {
 	display: block;
 	margin-top: 20px;
 	text-align: left;
-	font-family: 'Gotham SSm 5i', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 500;
 	font-style: italic;
 	font-size: 20px;
@@ -199,7 +199,7 @@ button.btn {
 }
 .callout blockquote,
 .callout blockquote p {
-	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 700;
 	letter-spacing: -0.025em;
 	font-size: 48px;
@@ -207,7 +207,7 @@ button.btn {
 	color: #fff;
 }
 .callout blockquote small {
-	font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 400;
 	font-style: normal;
 	font-size: 26px;
@@ -226,7 +226,7 @@ button.btn {
 	display: block;
 	width: 300px;
 	margin: auto;
-	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-size: 30px;
 	line-height: 1em;
 	font-weight: 800;
@@ -298,7 +298,7 @@ nav ul li {
 	padding: 10px 0;
 }
 nav a {
-	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-size: 17px;
 	line-height: 1em;
 	font-weight: 800;
@@ -428,7 +428,7 @@ footer nav a:hover {
 footer nav a:hover { text-decoration: underline; }
 
 .footer-cta {
-	font-family: 'Gotham SSm 2r', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 200;
 	font-style: normal;
 	font-size: 36px;
@@ -440,7 +440,7 @@ footer nav a:hover { text-decoration: underline; }
 	margin-bottom: 80px;
 }
 .footer-cta a {
-	font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B';
+	font-family: 'Helvetica Neue', Arial, sans-serif;
 	font-weight: 800;
 	font-style: normal;
 	color: #222;
