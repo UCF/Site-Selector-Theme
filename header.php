@@ -65,6 +65,7 @@
 
 	</head>
 	<body class="<?=body_classes()?>">
+		<?php if ( has_nav_menu( 'nav-menu' ) ) : ?>
 		<nav class="header-nav">
 			<a class="mobile-nav-toggle" href="#"><div class="hamburger"></div>Menu</a>
 			<?=wp_nav_menu(array(
@@ -76,3 +77,4 @@
 				));
 			?>
 		</nav>
+		<?php endif; ?>
