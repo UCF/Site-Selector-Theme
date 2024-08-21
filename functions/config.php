@@ -85,6 +85,7 @@ define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
 
 $theme_options = get_option(THEME_OPTIONS_NAME);
 define('GA_ACCOUNT', isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null );
+define('GA4_ACCOUNT', isset( $theme_options['ga4_account'] ) ? $theme_options['ga4_account'] : null );
 define('CB_UID', isset ( $theme_options['cb_uid'] ) ? $theme_options['cb_uid'] : null );
 define('CB_DOMAIN', isset( $theme_options['cb_domain'] ) ? $theme_options['cb_domain'] : null );
 
@@ -133,6 +134,11 @@ Config::$theme_settings = array(
 			'default'     => null,
 			'value'       => isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null,
 		)),
+		new TextField(array(
+			'name'        => 'Google Analytics 4 Account',
+			'id'          => THEME_OPTIONS_NAME.'[ga4_account]',
+			'description' => 'Example: <em>G-9876543</em>. Will override the Universal Analytics account above. Leave blank for development.'
+		))
 	),
 	'Site' => array(
 		new TextField(array(
