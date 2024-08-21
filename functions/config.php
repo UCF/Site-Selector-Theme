@@ -137,7 +137,9 @@ Config::$theme_settings = array(
 		new TextField(array(
 			'name'        => 'Google Analytics 4 Account',
 			'id'          => THEME_OPTIONS_NAME.'[ga4_account]',
-			'description' => 'Example: <em>G-9876543</em>. Will override the Universal Analytics account above. Leave blank for development.'
+			'description' => 'Example: <em>G-9876543</em>. Will override the Universal Analytics account above. Leave blank for development.',
+			'default'     => null,
+			'value'       => isset( $theme_options['ga4_account'] ) ? $theme_options['ga4_account'] : null,
 		))
 	),
 	'Site' => array(
