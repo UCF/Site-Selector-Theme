@@ -109,9 +109,11 @@ function get_parallax_page_header($page_id) {
 				<div class="row parallax-header-inner">
 					<div class="span12 parallax-header-inner">
 						<h1><?=$page->post_title?></h1>
+						<?php if ( $cta = get_cta_link() ) : ?>
 						<div class="cta">
-							<?php print get_cta_link(); ?>
+							<?php print $cta; ?>
 						</div>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

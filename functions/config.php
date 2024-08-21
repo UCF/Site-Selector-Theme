@@ -107,7 +107,9 @@ Config::$body_classes = array('default',);
  * Grab array of pages for Config::$theme_settings:
  **/
 $pages = get_posts(array('post_type' => 'page'));
-$pages_array = array();
+$pages_array = array(
+	"None" => null
+);
 foreach ($pages as $page) {
 	$pages_array[$page->post_title] = $page->ID;
 }
