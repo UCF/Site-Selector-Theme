@@ -82,6 +82,7 @@ define('THEME_CSS_URL', THEME_STATIC_URL.'/css');
 define('THEME_OPTIONS_GROUP', 'settings');
 define('THEME_OPTIONS_NAME', 'theme');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
+define('THEME_CUSTOMIZER_PREFIX', 'sst_theme_mods_');
 
 $theme_options = get_option(THEME_OPTIONS_NAME);
 define('GA_ACCOUNT', isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null );
@@ -273,3 +274,31 @@ function jquery_in_header() {
 }
 
 add_action('wp_enqueue_scripts', 'jquery_in_header');
+
+/**
+ * Customizer settings for the theme
+ */
+function sst_define_customizer_settings( $wp_customize ) {
+	$wp_customize->add_section(
+		THEME_CUSTOMIZER_PREFIX . 'footer',
+		array(
+			'title' => 'Footer Settings'
+		)
+	);
+
+	$wp_customize->add_setting(
+		'footer_content'
+	);
+
+	$wp_customize->add_control(
+		'footer_content',
+		array(
+			'type'        => 'textarea',
+			'label'       => 'Footer Content',
+			'description' => 'The HTML content to be placed directory above the UCF logo in the footer.',
+			'section'     => THEME_CUSTOMIZER_PREFIX . 'footer'
+		)
+	);
+}
+
+add_action( 'customize_register', 'sst_define_customizer_settings', 10, 1 );
