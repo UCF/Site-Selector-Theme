@@ -15,7 +15,7 @@
 						</nav>
 						<p class="footer-cta">With more than 69,000 students and four campuses anchoring industry clusters, we fuel Orlando’s $194 billion economy and inspire impactful discoveries to better the world.<?php print get_cta_link(); ?></p>
 						<p class="footer-logo">
-							<a target="_blank" href="http://www.ucf.edu/">Go to ucf.edu</a>
+							<a target="_blank" href="https://www.ucf.edu/">Go to ucf.edu</a>
 						</p>
 					</div>
 				</div>
